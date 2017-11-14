@@ -1,6 +1,6 @@
 ﻿using UIKit;
 
-namespace RiadIMDB
+namespace RiadIMDB.iOS
 {
     public class Application
     {
