@@ -1,5 +1,6 @@
 ﻿using System.Linq;
 using System.Threading.Tasks;
+using Cheesebaron.MvxPlugins.Connectivity;
 using IMDB.Common;
 using IMDB.Core.Services;
 using IMDB.Data;
@@ -12,12 +13,19 @@ namespace IMDB.Core.ViewModels
     {
         private readonly INavigationService _navigationService;
         private readonly ILanguageService _supportedLanguagesProvider;
+        private readonly IDialogService _dialogService;
+        private readonly IConnectivity _connectivity;
+
 
         public HomeViewModel(INavigationService navigationService,
-                             ILanguageService supportedLanguagesProvider)
+                             ILanguageService supportedLanguagesProvider,
+                             IDialogService dialogService, 
+                             IConnectivity connectivity)
         {
             _navigationService = navigationService;
             _supportedLanguagesProvider = supportedLanguagesProvider;
+            _dialogService = dialogService;
+            _connectivity = connectivity;
             NavigateToIncomingMoviesCommand = new MvxCommand(NavigateToIncomingMovies);
             Init();
         }
@@ -40,7 +48,14 @@ namespace IMDB.Core.ViewModels
         public IMvxCommand NavigateToIncomingMoviesCommand { get; }
         private void NavigateToIncomingMovies()
         {
-            _navigationService.ShowIncomingMovies(SelectedLanguage.Language);
+            if (_connectivity.IsConnected)
+            {
+                _navigationService.ShowIncomingMovies(SelectedLanguage.Language);
+            }
+            else
+            {
+                _dialogService.ShowMessage("90% of the time, we need the Internet in our life. This app is part of those 90%. Please feed us in some 01010101", true);
+            }
         }
 
         public MvxObservableCollection<LanguageViewModel> SupportedLanguages { get; private set; }

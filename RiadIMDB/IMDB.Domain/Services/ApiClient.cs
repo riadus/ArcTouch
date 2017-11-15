@@ -12,8 +12,11 @@ namespace IMDB.Domain.Services
     public class ApiClient : IApiClient
     {
         private const string BaseAddress = "https://api.themoviedb.org/3/";
+        private const string ImageBaseAddress = "http://image.tmdb.org/";
+
         private const string Token = "1f54bd990f1cdfb230adb312546d765d";
         private readonly HttpClient _httpClient;
+        private readonly HttpClient _imageHttpClient;
 
         public ApiClient()
         {
@@ -21,31 +24,40 @@ namespace IMDB.Domain.Services
             {
                 BaseAddress = new Uri(BaseAddress)
             };
+            _imageHttpClient = new HttpClient()
+            {
+                BaseAddress = new Uri(ImageBaseAddress)
+            };
         }
 
-        private string ApplyToken(string url)
+        private string ApplyTokenAndLanguage(string url, string lang)
         {
-            if(!url.Contains("?"))
+            url += $"?api_key={Token}";
+            if(!string.IsNullOrEmpty(lang))
             {
-                url += "?";
+                url += $"&language={lang}";
             }
-            url += $"api_key={Token}";
             return url;
         }
 
-        public async Task<T> GetAsync<T>(string url)
+        public async Task<T> GetAsync<T>(string url, string lang = "")
         {
-            var urlWithToken = ApplyToken(url);
-            var request = new HttpRequestMessage(HttpMethod.Get, urlWithToken);
+            var urlWithToken = ApplyTokenAndLanguage(url, lang);
+            var response = await GetContent(_httpClient, urlWithToken);
+            var content = await response.Content.ReadAsStringAsync();
+            var deserializedObject = JsonConvert.DeserializeObject<T>(content);
+            return deserializedObject;
+        }
 
+        private async Task<HttpResponseMessage> GetContent(HttpClient httpClient, string url)
+        {
+            var request = new HttpRequestMessage(HttpMethod.Get, url);
             try
             {
-                var response = await _httpClient.SendAsync(request).ConfigureAwait(false);
+                var response = await httpClient.SendAsync(request).ConfigureAwait(false);
                 if (response.IsSuccessStatusCode)
                 {
-                    var content = await response.Content.ReadAsStringAsync();
-                    var deserializedObject = JsonConvert.DeserializeObject<T>(content);
-                    return deserializedObject;
+                    return response;
                 }
                 throw new ApiException("Something wrong happened with the API", response.StatusCode);
             }
@@ -64,6 +76,12 @@ namespace IMDB.Domain.Services
         public Task<TResponse> PostAsync<TResponse, TContent>(string url, TContent content)
         {
             throw new NotImplementedException();
+        }
+
+        public async Task<byte[]> GetImage(string url)
+        {
+            var response = await GetContent(_imageHttpClient, $"t/p/w150/{url}");
+            return await response.Content.ReadAsByteArrayAsync();
         }
     }
 }

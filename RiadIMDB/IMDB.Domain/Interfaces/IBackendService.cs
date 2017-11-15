@@ -6,7 +6,7 @@ namespace IMDB.Domain.Interfaces
 {
     public interface IBackendService
     {
-        Task<IEnumerable<Movie>> GetMovies(string filmFilter);
-        Task<IEnumerable<Movie>> GetMoreMovies(string filmFilter);
+        Task<IEnumerable<Movie>> GetMovies(Language language);
+        Task<IEnumerable<Movie>> GetMoreMovies(Language language);
     }
 }

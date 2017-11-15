@@ -8,7 +8,6 @@ namespace IMDB.Core.ViewModels
         {
             Language = language;
         }
-        public string Path => $"{Language}.png";
         public Language Language { get; }
 
         bool _isSelected;

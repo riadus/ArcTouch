@@ -9,6 +9,6 @@
     <Import_RootNamespace>IMDB.Common</Import_RootNamespace>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="$(MSBuildThisFileDirectory)ObservalbleCollectionExtentions.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ObservalbleCollectionExtensions.cs" />
   </ItemGroup>
 </Project>

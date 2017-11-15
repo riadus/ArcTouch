@@ -30,9 +30,9 @@ namespace RiadIMDB.iOS.ViewControllers
             LanguagesTableView.Source = source;
 
             bindingSet.Apply();
+            ViewModel.PropertyChanged+= ViewModel_PropertyChanged;
 
             LanguagesTableView.ReloadData();
-            ViewModel.PropertyChanged+= ViewModel_PropertyChanged;
         }
 
         void ViewModel_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
@@ -47,6 +47,16 @@ namespace RiadIMDB.iOS.ViewControllers
         {
             LanguagesTableView.ScrollToRow(NSIndexPath.FromRowSection(ViewModel.SelectedLanguageIndex, 0),
                                            UIKit.UITableViewScrollPosition.Middle, true);
+        }
+
+        public override void ViewDidAppear(bool animated)
+        {
+            if (ViewModel != null)
+            {
+                ViewModel.PropertyChanged -= ViewModel_PropertyChanged;
+                ViewModel.PropertyChanged += ViewModel_PropertyChanged;
+            }
+            base.ViewDidAppear(animated);
         }
 
         public override void ViewWillDisappear(bool animated)

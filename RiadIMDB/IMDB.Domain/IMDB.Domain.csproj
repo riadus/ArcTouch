@@ -47,6 +47,9 @@
     <Compile Include="Interfaces\ILanguageService.cs" />
     <Compile Include="Services\LanguageService.cs" />
     <Compile Include="Interfaces\IDeviceInformations.cs" />
+    <Compile Include="Services\LanguageMapper.cs" />
+    <Compile Include="Interfaces\IMovieMapper.cs" />
+    <Compile Include="Interfaces\IFileStorageService.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Attributes\" />

@@ -1,4 +1,5 @@
 ﻿using IMDB.Core;
+using IMDB.Core.Services;
 using IMDB.Domain.Interfaces;
 using MvvmCross.Core.ViewModels;
 using MvvmCross.iOS.Platform;
@@ -22,6 +23,9 @@ namespace RiadIMDB.iOS
         protected override void InitializePlatformServices()
         {
             Mvx.RegisterType<IDeviceInformations, DeviceInformationsIOS>();
+            Mvx.RegisterType<IFileStorageService, FileStorageService>();
+            Mvx.RegisterType<IDialogService, DialogService>();
+
             base.InitializePlatformServices();
         }
     }

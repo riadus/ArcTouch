@@ -1,4 +1,5 @@
-﻿using System.Globalization;
+﻿using System;
+using System.Globalization;
 using Foundation;
 using IMDB.Domain.Interfaces;
 
@@ -8,7 +9,19 @@ namespace RiadIMDB.iOS.IoC
     {
         public DeviceInformationsIOS()
         {
-            DeviceLanguage = new CultureInfo(NSBundle.MainBundle.PreferredLocalizations[0]);
+            DeviceLanguage = TryLanguageParse(NSLocale.PreferredLanguages[0]);
+        }
+
+        private CultureInfo TryLanguageParse(string language)
+        {
+            try
+            {
+                return new CultureInfo(language);
+            }
+            catch(Exception e)
+            {
+                return null;
+            }
         }
 
         public CultureInfo DeviceLanguage { get; }

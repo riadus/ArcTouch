@@ -10,6 +10,11 @@ namespace RiadIMDB.iOS.Converters
         UIColor _trueColor;
         UIColor _falseColor;
 
+        public BoolToColorConverter()
+        {
+            
+        }
+
         public BoolToColorConverter(UIColor ifTrueColor, UIColor ifFalseColor)
         {
             _trueColor = ifTrueColor;

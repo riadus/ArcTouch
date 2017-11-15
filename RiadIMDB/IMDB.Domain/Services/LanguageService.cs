@@ -12,7 +12,7 @@ namespace IMDB.Domain.Services
     public class LanguageService : ILanguageService
     {
         private readonly IDeviceInformations _deviceInformations;
-        private const Language DefaultLanguage = Language.Arabic;
+        private const Language DefaultLanguage = Language.English;
 
         private List<Language> _languages;
 
@@ -32,14 +32,28 @@ namespace IMDB.Domain.Services
 
         public Language DeviceLanguage => GetLanguage(_deviceInformations.DeviceLanguage);
 
+        public Language? GetLanguage(string lang)
+        {
+            if (_languages.Any(x => x.ToString() == lang))
+            {
+                return _languages.FirstOrDefault(x => x.ToString() == lang);
+            }
+            return null;
+        }
+
         private Language GetLanguage(CultureInfo cultureInfo)
         {
-            var language = cultureInfo.EnglishName;
-            if (_languages.Any(x => x.ToString() == language))
+            if (cultureInfo != null)
             {
-                return _languages.FirstOrDefault(x => x.ToString() == language);
+                var language = Normalize(cultureInfo.EnglishName);
+                return GetLanguage(language) ?? DefaultLanguage;
             }
             return DefaultLanguage;
+        }
+
+        private string Normalize(string englishName)
+        {
+            return englishName.Split(' ')[0];
         }
     }
 }

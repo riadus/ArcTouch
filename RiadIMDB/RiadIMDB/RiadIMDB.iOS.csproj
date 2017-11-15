@@ -126,6 +126,15 @@
     <Reference Include="System.Collections.Immutable">
       <HintPath>..\packages\System.Collections.Immutable.1.4.0\lib\netstandard2.0\System.Collections.Immutable.dll</HintPath>
     </Reference>
+    <Reference Include="MvvmCross.Plugins.Messenger">
+      <HintPath>..\packages\MvvmCross.Plugin.Messenger.5.4.2\lib\Xamarin.iOS10\MvvmCross.Plugins.Messenger.dll</HintPath>
+    </Reference>
+    <Reference Include="Cheesebaron.MvxPlugins.Connectivity">
+      <HintPath>..\packages\Cheesebaron.MvxPlugins.Connectivity.3.2.0\lib\Xamarin.iOS10\Cheesebaron.MvxPlugins.Connectivity.dll</HintPath>
+    </Reference>
+    <Reference Include="Cheesebaron.MvxPlugins.Connectivity.Touch">
+      <HintPath>..\packages\Cheesebaron.MvxPlugins.Connectivity.3.2.0\lib\Xamarin.iOS10\Cheesebaron.MvxPlugins.Connectivity.Touch.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Contents.json" />
@@ -137,12 +146,14 @@
     <Folder Include="Views\" />
     <Folder Include="Converters\" />
     <Folder Include="IoC\" />
+    <Folder Include="Extensions\" />
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="LaunchScreen.storyboard" />
     <InterfaceDefinition Include="Views\HomeViewController.xib" />
     <InterfaceDefinition Include="Views\LanguageViewCell.xib" />
     <InterfaceDefinition Include="Views\IncomingMoviesViewController.xib" />
+    <InterfaceDefinition Include="Views\DialogMessageView.xib" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Info.plist" />
@@ -171,6 +182,16 @@
     <Compile Include="ViewControllers\IncomingMoviesViewController.designer.cs">
       <DependentUpon>IncomingMoviesViewController.cs</DependentUpon>
     </Compile>
+    <Compile Include="IoC\FileStorageService.cs" />
+    <Compile Include="IoC\DialogService.cs" />
+    <Compile Include="Extensions\UIViewExtensions.cs" />
+    <Compile Include="Views\ViewFactory.cs" />
+    <Compile Include="ViewControllers\DialogMessageView.cs" />
+    <Compile Include="ViewControllers\DialogMessageView.designer.cs">
+      <DependentUpon>DialogMessageView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Bootstrap\MessengerPluginBootstrap.cs" />
+    <Compile Include="Bootstrap\ConnectivityPluginBootstrap.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\IMDB.Core\IMDB.Core.csproj">

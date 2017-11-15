@@ -7,5 +7,6 @@ namespace IMDB.Domain.Interfaces
     {
         IEnumerable<Language> Languages { get; }
         Language DeviceLanguage { get; }
+        Language? GetLanguage(string lang);
     }
 }

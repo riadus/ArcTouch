@@ -30,7 +30,7 @@ namespace RiadIMDB.iOS.ViewControllers
             var bindingSet = this.CreateBindingSet<LanguageViewCell, LanguageViewModel>();
             bindingSet.Bind(_imageViewLoader)
                       .For(i => i.ImageUrl).
-                      To(vm => vm.Path)
+                      To(vm => vm.Language)
                       .WithConversion(new ImagePathConverter());
             bindingSet.Bind(ImageContainer)
                       .For(img => img.BackgroundColor)

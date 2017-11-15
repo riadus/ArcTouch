@@ -3,7 +3,7 @@ using MvvmCross.Core.ViewModels;
 
 namespace IMDB.Common
 {
-    public static class ObservalbleCollectionExtentions
+    public static class ObservalbleCollectionExtensions
     {
         public static MvxObservableCollection<T> ToMvxObservableCollection<T>(this IEnumerable<T> enumerable)
         {

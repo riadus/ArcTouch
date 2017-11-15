@@ -37,6 +37,8 @@
     <Compile Include="ViewModels\BaseViewModel.cs" />
     <Compile Include="ViewModels\LanguageViewModel.cs" />
     <Compile Include="ViewModels\IncomingMoviesViewModel.cs" />
+    <Compile Include="Services\IDialogService.cs" />
+    <Compile Include="ViewModels\Dialogs\DialogMessageViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="MvvmCross.Platform">
@@ -66,6 +68,12 @@
     <Reference Include="System.Collections.Immutable">
       <HintPath>..\packages\System.Collections.Immutable.1.4.0\lib\portable-net45+win8+wp8+wpa81\System.Collections.Immutable.dll</HintPath>
     </Reference>
+    <Reference Include="MvvmCross.Plugins.Messenger">
+      <HintPath>..\packages\MvvmCross.Plugin.Messenger.5.4.2\lib\portable-net45+win+wpa81+wp80\MvvmCross.Plugins.Messenger.dll</HintPath>
+    </Reference>
+    <Reference Include="Cheesebaron.MvxPlugins.Connectivity">
+      <HintPath>..\packages\Cheesebaron.MvxPlugins.Connectivity.3.2.0\lib\portable-net45+win+wpa81\Cheesebaron.MvxPlugins.Connectivity.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -73,6 +81,7 @@
   <ItemGroup>
     <Folder Include="Services\" />
     <Folder Include="ViewModels\" />
+    <Folder Include="ViewModels\Dialogs\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\IMDB.Domain\IMDB.Domain.csproj">

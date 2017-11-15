@@ -9,7 +9,7 @@ namespace RiadIMDB.iOS.Converters
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
             var path = value.ToString();
-            return $"res:{path}";
+            return $"res:{path}.png";
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
