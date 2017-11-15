@@ -16,13 +16,22 @@ namespace RiadIMDB.iOS.ViewControllers
     {
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
-        UIKit.UIButton LoadBtn { get; set; }
+        UIKit.UITableView LanguagesTableView { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UIButton NavigateToUpcompingMoviesBtn { get; set; }
 
         void ReleaseDesignerOutlets ()
         {
-            if (LoadBtn != null) {
-                LoadBtn.Dispose ();
-                LoadBtn = null;
+            if (LanguagesTableView != null) {
+                LanguagesTableView.Dispose ();
+                LanguagesTableView = null;
+            }
+
+            if (NavigateToUpcompingMoviesBtn != null) {
+                NavigateToUpcompingMoviesBtn.Dispose ();
+                NavigateToUpcompingMoviesBtn = null;
             }
         }
     }

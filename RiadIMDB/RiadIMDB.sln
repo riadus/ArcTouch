@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IMDB.Domain", "IMDB.Domain\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IMDB.Data", "IMDB.Data\IMDB.Data.csproj", "{BA90BCF2-498F-459A-82BF-75A379F86F41}"
 EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "IMDB.Common", "IMDB.Common\IMDB.Common.shproj", "{430E42DD-04A3-4941-A9BC-EF91C6E69C7D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|iPhoneSimulator = Debug|iPhoneSimulator

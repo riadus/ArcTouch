@@ -1,6 +1,8 @@
-﻿using System;
+﻿using CoreGraphics;
+using Foundation;
 using IMDB.Core.ViewModels;
 using MvvmCross.Binding.BindingContext;
+using MvvmCross.Binding.iOS.Views;
 using MvvmCross.iOS.Views;
 
 namespace RiadIMDB.iOS.ViewControllers
@@ -15,22 +17,42 @@ namespace RiadIMDB.iOS.ViewControllers
         private void SetBindings()
         {
             var bindingSet = this.CreateBindingSet<HomeViewController, HomeViewModel>();
-            bindingSet.Bind(LoadBtn)
-                      .To(vm => vm.LoadCommand);
+            bindingSet.Bind(NavigateToUpcompingMoviesBtn)
+                      .To(vm => vm.NavigateToIncomingMoviesCommand);
+
+            var source = new MvxSimpleTableViewSource(LanguagesTableView, LanguageViewCell.Key, LanguageViewCell.Key);
+
+            bindingSet.Bind(source)
+                      .To(vm => vm.SupportedLanguages);
+            bindingSet.Bind(source)
+                      .For(table => table.SelectedItem)
+                      .To(vm => vm.SelectedLanguage);
+            LanguagesTableView.Source = source;
 
             bindingSet.Apply();
+
+            LanguagesTableView.ReloadData();
+            ViewModel.PropertyChanged+= ViewModel_PropertyChanged;
         }
 
-        public override void ViewDidLoad()
+        void ViewModel_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
         {
-            base.ViewDidLoad();
-            // Perform any additional setup after loading the view, typically from a nib.
+            if (e.PropertyName == nameof(ViewModel.SelectedLanguageIndex))
+            {
+                CenterSelectedLanguage();
+            }
         }
 
-        public override void DidReceiveMemoryWarning()
+        private void CenterSelectedLanguage()
         {
-            base.DidReceiveMemoryWarning();
-            // Release any cached data, images, etc that aren't in use.
+            LanguagesTableView.ScrollToRow(NSIndexPath.FromRowSection(ViewModel.SelectedLanguageIndex, 0),
+                                           UIKit.UITableViewScrollPosition.Middle, true);
+        }
+
+        public override void ViewWillDisappear(bool animated)
+        {
+            ViewModel.PropertyChanged -= ViewModel_PropertyChanged;
+            base.ViewWillDisappear(animated);
         }
     }
 }

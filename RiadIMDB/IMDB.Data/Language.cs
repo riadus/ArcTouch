@@ -25,6 +25,8 @@
         Serbian,
         Arabic,
         Dutch,
+        Finnish,
+        Persian,
         Other
     }
 }

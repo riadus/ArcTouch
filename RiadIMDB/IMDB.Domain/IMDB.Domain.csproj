@@ -44,6 +44,9 @@
     <Compile Include="DTOs\GenresApiResponse.cs" />
     <Compile Include="DTOs\GenreDto.cs" />
     <Compile Include="Services\BackendService.cs" />
+    <Compile Include="Interfaces\ILanguageService.cs" />
+    <Compile Include="Services\LanguageService.cs" />
+    <Compile Include="Interfaces\IDeviceInformations.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Attributes\" />

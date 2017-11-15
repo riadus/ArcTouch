@@ -1,7 +1,9 @@
-﻿using System;
-using IMDB.Core;
+﻿using IMDB.Core;
+using IMDB.Domain.Interfaces;
 using MvvmCross.Core.ViewModels;
 using MvvmCross.iOS.Platform;
+using MvvmCross.Platform;
+using RiadIMDB.iOS.IoC;
 
 namespace RiadIMDB.iOS
 {
@@ -19,6 +21,7 @@ namespace RiadIMDB.iOS
 
         protected override void InitializePlatformServices()
         {
+            Mvx.RegisterType<IDeviceInformations, DeviceInformationsIOS>();
             base.InitializePlatformServices();
         }
     }

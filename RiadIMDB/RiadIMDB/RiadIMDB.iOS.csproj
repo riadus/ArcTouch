@@ -102,6 +102,30 @@
     <Reference Include="MvvmCross.Localization">
       <HintPath>..\packages\MvvmCross.Binding.5.4.2\lib\Xamarin.iOS10\MvvmCross.Localization.dll</HintPath>
     </Reference>
+    <Reference Include="MvvmCross.Plugins.File">
+      <HintPath>..\packages\MvvmCross.Plugin.File.5.4.2\lib\Xamarin.iOS10\MvvmCross.Plugins.File.dll</HintPath>
+    </Reference>
+    <Reference Include="MvvmCross.Plugins.File.iOS">
+      <HintPath>..\packages\MvvmCross.Plugin.File.5.4.2\lib\Xamarin.iOS10\MvvmCross.Plugins.File.iOS.dll</HintPath>
+    </Reference>
+    <Reference Include="MvvmCross.Plugins.DownloadCache">
+      <HintPath>..\packages\MvvmCross.Plugin.DownloadCache.5.4.2\lib\Xamarin.iOS10\MvvmCross.Plugins.DownloadCache.dll</HintPath>
+    </Reference>
+    <Reference Include="MvvmCross.Plugins.DownloadCache.iOS">
+      <HintPath>..\packages\MvvmCross.Plugin.DownloadCache.5.4.2\lib\Xamarin.iOS10\MvvmCross.Plugins.DownloadCache.iOS.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.IO.Compression" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.10.0.3\lib\netstandard1.3\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="MvvmCross.Plugins.Json">
+      <HintPath>..\packages\MvvmCross.Plugin.Json.5.4.2\lib\Xamarin.iOS10\MvvmCross.Plugins.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Collections.Immutable">
+      <HintPath>..\packages\System.Collections.Immutable.1.4.0\lib\netstandard2.0\System.Collections.Immutable.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Contents.json" />
@@ -111,10 +135,14 @@
     <Folder Include="Resources\" />
     <Folder Include="ViewControllers\" />
     <Folder Include="Views\" />
+    <Folder Include="Converters\" />
+    <Folder Include="IoC\" />
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="LaunchScreen.storyboard" />
     <InterfaceDefinition Include="Views\HomeViewController.xib" />
+    <InterfaceDefinition Include="Views\LanguageViewCell.xib" />
+    <InterfaceDefinition Include="Views\IncomingMoviesViewController.xib" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Info.plist" />
@@ -128,6 +156,20 @@
     <Compile Include="ViewControllers\HomeViewController.cs" />
     <Compile Include="ViewControllers\HomeViewController.designer.cs">
       <DependentUpon>HomeViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViewControllers\LanguageViewCell.cs" />
+    <Compile Include="ViewControllers\LanguageViewCell.designer.cs">
+      <DependentUpon>LanguageViewCell.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Bootstrap\FilePluginBootstrap.cs" />
+    <Compile Include="Bootstrap\DownloadCachePluginBootstrap.cs" />
+    <Compile Include="Bootstrap\JsonPluginBootstrap.cs" />
+    <Compile Include="Converters\ImagePathConverter.cs" />
+    <Compile Include="Converters\BoolToColorConverter.cs" />
+    <Compile Include="IoC\DeviceInformationsIOS.cs" />
+    <Compile Include="ViewControllers\IncomingMoviesViewController.cs" />
+    <Compile Include="ViewControllers\IncomingMoviesViewController.designer.cs">
+      <DependentUpon>IncomingMoviesViewController.cs</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -143,6 +185,83 @@
       <Project>{1F5AC637-6A76-43E9-94C1-1E07532D221B}</Project>
       <Name>IMDB.Domain</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\Arabic.png" />
+    <BundleResource Include="Resources\Arabic%402x.png" />
+    <BundleResource Include="Resources\Arabic%403x.png" />
+    <BundleResource Include="Resources\Bulgarian.png" />
+    <BundleResource Include="Resources\Bulgarian%402x.png" />
+    <BundleResource Include="Resources\Bulgarian%403x.png" />
+    <BundleResource Include="Resources\Czech.png" />
+    <BundleResource Include="Resources\Czech%402x.png" />
+    <BundleResource Include="Resources\Czech%403x.png" />
+    <BundleResource Include="Resources\Danish.png" />
+    <BundleResource Include="Resources\Danish%402x.png" />
+    <BundleResource Include="Resources\Danish%403x.png" />
+    <BundleResource Include="Resources\Dutch.png" />
+    <BundleResource Include="Resources\Dutch%402x.png" />
+    <BundleResource Include="Resources\Dutch%403x.png" />
+    <BundleResource Include="Resources\English.png" />
+    <BundleResource Include="Resources\English%402x.png" />
+    <BundleResource Include="Resources\English%403x.png" />
+    <BundleResource Include="Resources\Finnish.png" />
+    <BundleResource Include="Resources\Finnish%402x.png" />
+    <BundleResource Include="Resources\Finnish%403x.png" />
+    <BundleResource Include="Resources\French.png" />
+    <BundleResource Include="Resources\French%402x.png" />
+    <BundleResource Include="Resources\French%403x.png" />
+    <BundleResource Include="Resources\German.png" />
+    <BundleResource Include="Resources\German%402x.png" />
+    <BundleResource Include="Resources\German%403x.png" />
+    <BundleResource Include="Resources\Greek.png" />
+    <BundleResource Include="Resources\Greek%402x.png" />
+    <BundleResource Include="Resources\Greek%403x.png" />
+    <BundleResource Include="Resources\Hebrew.png" />
+    <BundleResource Include="Resources\Hebrew%402x.png" />
+    <BundleResource Include="Resources\Hebrew%403x.png" />
+    <BundleResource Include="Resources\Hungarian.png" />
+    <BundleResource Include="Resources\Hungarian%402x.png" />
+    <BundleResource Include="Resources\Hungarian%403x.png" />
+    <BundleResource Include="Resources\Italian.png" />
+    <BundleResource Include="Resources\Italian%402x.png" />
+    <BundleResource Include="Resources\Italian%403x.png" />
+    <BundleResource Include="Resources\Korean.png" />
+    <BundleResource Include="Resources\Korean%402x.png" />
+    <BundleResource Include="Resources\Korean%403x.png" />
+    <BundleResource Include="Resources\Mandarin.png" />
+    <BundleResource Include="Resources\Mandarin%402x.png" />
+    <BundleResource Include="Resources\Mandarin%403x.png" />
+    <BundleResource Include="Resources\Norwegian.png" />
+    <BundleResource Include="Resources\Norwegian%402x.png" />
+    <BundleResource Include="Resources\Norwegian%403x.png" />
+    <BundleResource Include="Resources\Persian.png" />
+    <BundleResource Include="Resources\Persian%402x.png" />
+    <BundleResource Include="Resources\Persian%403x.png" />
+    <BundleResource Include="Resources\Polish.png" />
+    <BundleResource Include="Resources\Polish%402x.png" />
+    <BundleResource Include="Resources\Polish%403x.png" />
+    <BundleResource Include="Resources\Portuguese.png" />
+    <BundleResource Include="Resources\Portuguese%402x.png" />
+    <BundleResource Include="Resources\Portuguese%403x.png" />
+    <BundleResource Include="Resources\Russian.png" />
+    <BundleResource Include="Resources\Russian%402x.png" />
+    <BundleResource Include="Resources\Russian%403x.png" />
+    <BundleResource Include="Resources\Serbian.png" />
+    <BundleResource Include="Resources\Serbian%402x.png" />
+    <BundleResource Include="Resources\Serbian%403x.png" />
+    <BundleResource Include="Resources\Slovak.png" />
+    <BundleResource Include="Resources\Slovak%402x.png" />
+    <BundleResource Include="Resources\Slovak%403x.png" />
+    <BundleResource Include="Resources\Spanish.png" />
+    <BundleResource Include="Resources\Spanish%402x.png" />
+    <BundleResource Include="Resources\Spanish%403x.png" />
+    <BundleResource Include="Resources\Turkish.png" />
+    <BundleResource Include="Resources\Turkish%402x.png" />
+    <BundleResource Include="Resources\Turkish%403x.png" />
+    <BundleResource Include="Resources\Ukrainian.png" />
+    <BundleResource Include="Resources\Ukrainian%402x.png" />
+    <BundleResource Include="Resources\Ukrainian%403x.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
 </Project>
