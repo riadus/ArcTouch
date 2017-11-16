@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using IMDB.Data;
-using IMDB.Domain.Dtos;
+using IMDB.Domain.DTOs;
 
 namespace IMDB.Domain.Interfaces
 {

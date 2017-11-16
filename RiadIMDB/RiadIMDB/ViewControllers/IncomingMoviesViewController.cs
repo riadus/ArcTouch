@@ -1,7 +1,8 @@
 ﻿using System;
 using IMDB.Core.ViewModels;
+using MvvmCross.Binding.BindingContext;
+using MvvmCross.Binding.iOS.Views;
 using MvvmCross.iOS.Views;
-using UIKit;
 
 namespace RiadIMDB.iOS.ViewControllers
 {
@@ -9,18 +10,22 @@ namespace RiadIMDB.iOS.ViewControllers
     {
         public IncomingMoviesViewController() : base("IncomingMoviesViewController", null)
         {
+            this.DelayBind(SetBindings);
         }
 
-        public override void ViewDidLoad()
+        private void SetBindings()
         {
-            base.ViewDidLoad();
-            // Perform any additional setup after loading the view, typically from a nib.
-        }
+            var bindingSet = this.CreateBindingSet<IncomingMoviesViewController, IncomingMoviesViewModel>();
 
-        public override void DidReceiveMemoryWarning()
-        {
-            base.DidReceiveMemoryWarning();
-            // Release any cached data, images, etc that aren't in use.
+            var source = new MvxSimpleTableViewSource(MoviesTableView, MovieViewCell.Key, MovieViewCell.Key);
+
+            bindingSet.Bind(source)
+                      .To(vm => vm.Movies);
+            MoviesTableView.Source = source;
+
+            bindingSet.Apply();
+            MoviesTableView.RowHeight = 436;
+            MoviesTableView.ReloadData();
         }
     }
 }

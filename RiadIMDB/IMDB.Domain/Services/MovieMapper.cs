@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using IMDB.Data;
 using IMDB.Domain.Attributes;
-using IMDB.Domain.Dtos;
+using IMDB.Domain.DTOs;
 using IMDB.Domain.Interfaces;
 
 namespace IMDB.Domain.Services

@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace IMDB.Domain.Dtos
+namespace IMDB.Domain.DTOs
 {
     public class GenresApiResponse
     {

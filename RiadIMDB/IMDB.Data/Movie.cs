@@ -32,5 +32,7 @@ namespace IMDB.Data
         public string Overview { get; set; }
 
         public DateTime ReleaseDate { get; set; }
+
+        public List<Language> AvailableLanguages { get; set; }
     }
 }

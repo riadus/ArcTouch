@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using Newtonsoft.Json;
 
-namespace IMDB.Domain.Dtos
+namespace IMDB.Domain.DTOs
 {
     public class MoviesApiResponse
     {

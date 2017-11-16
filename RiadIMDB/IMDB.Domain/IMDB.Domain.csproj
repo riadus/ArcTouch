@@ -50,6 +50,8 @@
     <Compile Include="Services\LanguageMapper.cs" />
     <Compile Include="Interfaces\IMovieMapper.cs" />
     <Compile Include="Interfaces\IFileStorageService.cs" />
+    <Compile Include="DTOs\Translation.cs" />
+    <Compile Include="DTOs\TranslationsApiResponse.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Attributes\" />

@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 
-namespace IMDB.Domain.Dtos
+namespace IMDB.Domain.DTOs
 {
     public class DatesDto
     {

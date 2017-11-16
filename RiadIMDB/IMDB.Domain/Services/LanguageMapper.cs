@@ -1,4 +1,6 @@
-﻿using IMDB.Data;
+﻿using System.Collections.Generic;
+using System.Linq;
+using IMDB.Data;
 using IMDB.Domain.Attributes;
 using IMDB.Domain.Interfaces;
 
@@ -7,63 +9,57 @@ namespace IMDB.Domain.Services
     [RegisterInterfaceAsDynamic]
     public class LanguageMapper : IMapper<Language, string>
     {
+        private Dictionary<Language, string> _languageDictionary;
+
+
+        public LanguageMapper()
+        {
+            _languageDictionary = new Dictionary<Language, string>{
+                {Language.Arabic, "ar"},
+                {Language.Bulgarian, "bg"},
+                {Language.Czech, "cs"},
+                {Language.Danish, "da"},
+                {Language.Dutch, "nk"},
+                {Language.English, "en"},
+                {Language.Finnish, "fi"},
+                {Language.French, "fr"},
+                {Language.German, "de"},
+                {Language.Greek, "el"},
+                {Language.Hebrew, "he"},
+                {Language.Hungarian, "hu"},
+                {Language.Italian, "it"},
+                {Language.Korean, "ko"},
+                {Language.Mandarin, "zh"},
+                {Language.Norwegian, "no"},
+                {Language.Persian, "fa"},
+                {Language.Polish, "pl"},
+                {Language.Portuguese, "pt"},
+                {Language.Russian, "ru"},
+                {Language.Serbian, "sr"},
+                {Language.Slovak, "sk"},
+                {Language.Spanish, "es"},
+                {Language.Turkish, "tr"},
+                {Language.Ukrainian, "uk"},
+                {Language.Other, ""}
+            };
+        }
+
         public string Map(Language source)
         {
-            switch (source)
+            if (_languageDictionary.ContainsKey(source))
             {
-                case Language.Arabic:
-                    return "ar";
-                case Language.Bulgarian:
-                    return "bg";
-                case Language.Czech:
-                    return "cs";
-                case Language.Danish:
-                    return "da";
-                case Language.Dutch:
-                    return "nl";
-                case Language.English:
-                    return "en";
-                case Language.Finnish:
-                    return "fi";
-                case Language.French:
-                    return "fr";
-                case Language.German:
-                    return "de";
-                case Language.Greek:
-                    return "el";
-                case Language.Hebrew:
-                    return "he";
-                case Language.Hungarian:
-                    return "hu";
-                case Language.Italian:
-                    return "it";
-                case Language.Korean:
-                    return "ko";
-                case Language.Mandarin:
-                    return "zh";
-                case Language.Norwegian:
-                    return "no";
-                case Language.Persian:
-                    return "fa";
-                case Language.Polish:
-                    return "pl";
-                case Language.Portuguese:
-                    return "pt";
-                case Language.Russian:
-                    return "ru";
-                case Language.Serbian:
-                    return "sr";
-                case Language.Slovak:
-                    return "sk";
-                case Language.Spanish:
-                    return "es";
-                case Language.Turkish:
-                    return "tr";
-                case Language.Ukrainian:
-                    return "uk";
-                default:
-                    return "en";
+                return _languageDictionary[source];
             }
+            return _languageDictionary[Language.Other];
+        }
+
+        public Language MapBack(string source)
+        {
+            if(_languageDictionary.ContainsValue(source))
+            {
+                return _languageDictionary.First(x => x.Value == source).Key;
+            }
+            return Language.Other;
         }
     }
 }

@@ -14,8 +14,16 @@ namespace RiadIMDB.iOS.ViewControllers
     [Register ("IncomingMoviesViewController")]
     partial class IncomingMoviesViewController
     {
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UITableView MoviesTableView { get; set; }
+
         void ReleaseDesignerOutlets ()
         {
+            if (MoviesTableView != null) {
+                MoviesTableView.Dispose ();
+                MoviesTableView = null;
+            }
         }
     }
 }

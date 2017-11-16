@@ -154,6 +154,7 @@
     <InterfaceDefinition Include="Views\LanguageViewCell.xib" />
     <InterfaceDefinition Include="Views\IncomingMoviesViewController.xib" />
     <InterfaceDefinition Include="Views\DialogMessageView.xib" />
+    <InterfaceDefinition Include="Views\MovieViewCell.xib" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Info.plist" />
@@ -192,6 +193,10 @@
     </Compile>
     <Compile Include="Bootstrap\MessengerPluginBootstrap.cs" />
     <Compile Include="Bootstrap\ConnectivityPluginBootstrap.cs" />
+    <Compile Include="ViewControllers\MovieViewCell.cs" />
+    <Compile Include="ViewControllers\MovieViewCell.designer.cs">
+      <DependentUpon>MovieViewCell.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\IMDB.Core\IMDB.Core.csproj">

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using IMDB.Data;
 using IMDB.Domain.Attributes;
-using IMDB.Domain.Dtos;
+using IMDB.Domain.DTOs;
 using IMDB.Domain.Interfaces;
 
 namespace IMDB.Domain.Services
@@ -43,8 +43,12 @@ namespace IMDB.Domain.Services
                 var genreResponse = await _apiClient.GetAsync<GenresApiResponse>("genre/movie/list", lang).ConfigureAwait(false);
                 _genres = genreResponse.genres;
             }
+
+            var movies = new List<Movie>();
+
             foreach (var movieDto in moviesResponse.Results)
             {
+                var translations = await _apiClient.GetAsync<TranslationsApiResponse>($"movie/{movieDto.Id}/translations").ConfigureAwait(false);
                 if (movieDto.PosterPath != null)
                 {
                     await DownloadImageIfNeeded("Posters", movieDto.PosterPath);
@@ -53,9 +57,12 @@ namespace IMDB.Domain.Services
                 {
                     await DownloadImageIfNeeded("Backdrops", movieDto.BackdropPath);
                 }
+
+                var movie = _movieMapper.Map(movieDto, _genres);
+                movie.AvailableLanguages = translations.Translations.Select(translation => _languageMapper.MapBack(translation.Iso639_1)).ToList();
+                movies.Add(movie);
             }
 
-            var movies = moviesResponse.Results.Select(movieDto => _movieMapper.Map(movieDto, _genres));
             _page = moviesResponse.Page;
             return movies;
         }
