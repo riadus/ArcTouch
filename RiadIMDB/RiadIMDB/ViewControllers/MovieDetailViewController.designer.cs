@@ -1,4 +1,4 @@
-// WARNING
+﻿// WARNING
 //
 // This file has been generated automatically by Visual Studio from the outlets and
 // actions declared in your storyboard file.
@@ -14,10 +14,6 @@ namespace RiadIMDB.iOS.Views
     [Register ("MovieDetailViewController")]
     partial class MovieDetailViewController
     {
-        [Outlet]
-        [GeneratedCode ("iOS Designer", "1.0")]
-        MvvmCross.Binding.iOS.Views.MvxImageView BackdropImage { get; set; }
-
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UIScrollView ContentView { get; set; }
@@ -44,11 +40,6 @@ namespace RiadIMDB.iOS.Views
 
         void ReleaseDesignerOutlets ()
         {
-            if (BackdropImage != null) {
-                BackdropImage.Dispose ();
-                BackdropImage = null;
-            }
-
             if (ContentView != null) {
                 ContentView.Dispose ();
                 ContentView = null;

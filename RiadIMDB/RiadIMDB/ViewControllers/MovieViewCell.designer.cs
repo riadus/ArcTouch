@@ -1,4 +1,4 @@
-// WARNING
+﻿// WARNING
 //
 // This file has been generated automatically by Visual Studio from the outlets and
 // actions declared in your storyboard file.
@@ -19,15 +19,7 @@ namespace RiadIMDB.iOS.ViewControllers
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
-        MvvmCross.Binding.iOS.Views.MvxImageView OriginalLanguageImage { get; set; }
-
-        [Outlet]
-        [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UILabel OverviewLabel { get; set; }
-
-        [Outlet]
-        [GeneratedCode ("iOS Designer", "1.0")]
-        MvvmCross.Binding.iOS.Views.MvxImageView PosterImage { get; set; }
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
@@ -37,10 +29,6 @@ namespace RiadIMDB.iOS.ViewControllers
         [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UILabel TitleLabel { get; set; }
 
-        [Outlet]
-        [GeneratedCode ("iOS Designer", "1.0")]
-        MvvmCross.Binding.iOS.Views.MvxImageView UserLanguageImage { get; set; }
-
         void ReleaseDesignerOutlets ()
         {
             if (GenresLabel != null) {
@@ -48,19 +36,9 @@ namespace RiadIMDB.iOS.ViewControllers
                 GenresLabel = null;
             }
 
-            if (OriginalLanguageImage != null) {
-                OriginalLanguageImage.Dispose ();
-                OriginalLanguageImage = null;
-            }
-
             if (OverviewLabel != null) {
                 OverviewLabel.Dispose ();
                 OverviewLabel = null;
-            }
-
-            if (PosterImage != null) {
-                PosterImage.Dispose ();
-                PosterImage = null;
             }
 
             if (ReleaseDateLabel != null) {
@@ -71,11 +49,6 @@ namespace RiadIMDB.iOS.ViewControllers
             if (TitleLabel != null) {
                 TitleLabel.Dispose ();
                 TitleLabel = null;
-            }
-
-            if (UserLanguageImage != null) {
-                UserLanguageImage.Dispose ();
-                UserLanguageImage = null;
             }
         }
     }

@@ -1,4 +1,4 @@
-// WARNING
+﻿// WARNING
 //
 // This file has been generated automatically by Visual Studio from the outlets and
 // actions declared in your storyboard file.
@@ -15,19 +15,10 @@ namespace RiadIMDB.iOS.ViewControllers
     {
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
-        MvvmCross.Binding.iOS.Views.MvxImageView FlagImage { get; set; }
-
-        [Outlet]
-        [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UIView ImageContainer { get; set; }
 
         void ReleaseDesignerOutlets ()
         {
-            if (FlagImage != null) {
-                FlagImage.Dispose ();
-                FlagImage = null;
-            }
-
             if (ImageContainer != null) {
                 ImageContainer.Dispose ();
                 ImageContainer = null;
