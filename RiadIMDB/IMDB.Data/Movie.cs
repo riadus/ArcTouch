@@ -19,7 +19,7 @@ namespace IMDB.Data
 
         public string PosterPath { get; set; }
 
-        public string OriginalLanguage { get; set; }
+        public Language OriginalLanguage { get; set; }
 
         public string OriginalTitle { get; set; }
 

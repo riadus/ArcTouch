@@ -11,6 +11,12 @@ namespace IMDB.Domain.Services
     [RegisterInterfaceAsLazySingleton]
     public class MovieMapper : IMovieMapper
     {
+        private readonly IMapper<Language, string> _languageMapper;
+        public MovieMapper(IMapper<Language, string> languageMapper)
+        {
+            _languageMapper = languageMapper;
+        }
+
         private Movie Map(MovieDto source)
         {
             return new Movie
@@ -19,7 +25,7 @@ namespace IMDB.Domain.Services
                 BackdropPath = source.BackdropPath,
                 IsAdult = source.IsAdult,
                 IsVideo = source.IsVideo,
-                OriginalLanguage = source.OriginalLanguage,
+                OriginalLanguage = _languageMapper.MapBack(source.OriginalLanguage),
                 OriginalTitle = source.OriginalTitle,
                 Overview = source.Overview,
                 Popularity = source.Popularity,
@@ -34,7 +40,14 @@ namespace IMDB.Domain.Services
         public Movie Map(MovieDto source, IEnumerable<GenreDto> genreDtos)
         {
             var movie = Map(source);
-            movie.Genres = source.GenreIds.Select(genre => genreDtos.First(dto => dto.Id == genre).Name).ToList();
+            movie.Genres = source.GenreIds.Select(genre => genreDtos.FirstOrDefault(dto => dto.Id == genre)?.Name).ToList();
+            return movie;
+        }
+
+        public Movie Map(MovieDetailDto source, IEnumerable<GenreDto> genreDtos)
+        {
+            var movie = Map(source);
+            movie.Genres = genreDtos.Select(x => x.Name).ToList();
             return movie;
         }
     }

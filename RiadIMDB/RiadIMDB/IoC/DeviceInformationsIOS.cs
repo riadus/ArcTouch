@@ -18,7 +18,7 @@ namespace RiadIMDB.iOS.IoC
             {
                 return new CultureInfo(language);
             }
-            catch(Exception e)
+            catch(Exception)
             {
                 return null;
             }

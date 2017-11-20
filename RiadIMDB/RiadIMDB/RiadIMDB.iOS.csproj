@@ -155,6 +155,8 @@
     <InterfaceDefinition Include="Views\IncomingMoviesViewController.xib" />
     <InterfaceDefinition Include="Views\DialogMessageView.xib" />
     <InterfaceDefinition Include="Views\MovieViewCell.xib" />
+    <InterfaceDefinition Include="Views\LanguageCollectionViewCell.xib" />
+    <InterfaceDefinition Include="Views\MovieDetailViewController.xib" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Info.plist" />
@@ -197,6 +199,15 @@
     <Compile Include="ViewControllers\MovieViewCell.designer.cs">
       <DependentUpon>MovieViewCell.cs</DependentUpon>
     </Compile>
+    <Compile Include="ViewControllers\LanguageCollectionViewCell.cs" />
+    <Compile Include="ViewControllers\LanguageCollectionViewCell.designer.cs">
+      <DependentUpon>LanguageCollectionViewCell.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViewControllers\MovieDetailViewController.cs" />
+    <Compile Include="ViewControllers\MovieDetailViewController.designer.cs">
+      <DependentUpon>MovieDetailViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Converters\ReverseBooleanConverter.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\IMDB.Core\IMDB.Core.csproj">
@@ -289,5 +300,6 @@
     <BundleResource Include="Resources\Ukrainian%402x.png" />
     <BundleResource Include="Resources\Ukrainian%403x.png" />
   </ItemGroup>
+  <Import Project="..\IMDB.Common\IMDB.Common.projitems" Label="Shared" Condition="Exists('..\IMDB.Common\IMDB.Common.projitems')" />
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
 </Project>

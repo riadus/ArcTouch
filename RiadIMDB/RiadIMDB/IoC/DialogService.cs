@@ -19,12 +19,12 @@ namespace RiadIMDB.iOS.IoC
             });
         }
 
-        public void ShowMessage(string message, bool removable)
+        public void ShowMessage(string message, bool removable, bool withSpinner)
         {
             BeginInvokeOnMainThread(() =>
             {
                 _view = ViewFactory.Create<DialogMessageView>("DialogMessageView");
-                _view.SetDataContext(new DialogMessageViewModel(message, removable));
+                _view.SetDataContext(new DialogMessageViewModel(message, removable, withSpinner));
                 UIApplication.SharedApplication.KeyWindow.RootViewController.Add(_view);
             });
         }

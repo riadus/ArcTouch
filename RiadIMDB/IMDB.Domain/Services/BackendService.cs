@@ -17,31 +17,41 @@ namespace IMDB.Domain.Services
         private readonly IMapper<Language, string> _languageMapper;
         private readonly IFileStorageService _fileStorageService;
         private int _page;
+        private int _maxPage;
         private IEnumerable<GenreDto> _genres; 
         public BackendService(IApiClient apiClient,
                               IMovieMapper movieMapper,
                               IMapper<Language, string> languageMapper,
                               IFileStorageService fileStorageService)
         {
-            _page = 0;
+            _page = 1;
             _apiClient = apiClient;
             _movieMapper = movieMapper;
             _languageMapper = languageMapper;
             _fileStorageService = fileStorageService;
         }
 
-        public Task<IEnumerable<Movie>> GetMoreMovies(Language language)
+        public async Task<IEnumerable<Movie>> GetMoreMovies(Language language)
         {
-            throw new NotImplementedException();
+            if (_page == _maxPage)
+            {
+                return new List<Movie>();
+            }
+            return await GetMovies(language, _page);
         }
 
-        public async Task<IEnumerable<Movie>> GetMovies(Language language)
+        public Task<IEnumerable<Movie>> GetMovies(Language language)
+        {
+            return GetMovies(language, 1);
+        }
+
+        private async Task<IEnumerable<Movie>> GetMovies(Language language, int page)
         {
             var lang = _languageMapper.Map(language);
-            var moviesResponse = await _apiClient.GetAsync<MoviesApiResponse>("movie/upcoming", lang).ConfigureAwait(false);
+            var moviesResponse = await _apiClient.GetAsync<MoviesApiResponse>("movie/upcoming", lang, page).ConfigureAwait(false);
             if(_genres == null) {
                 var genreResponse = await _apiClient.GetAsync<GenresApiResponse>("genre/movie/list", lang).ConfigureAwait(false);
-                _genres = genreResponse.genres;
+                _genres = genreResponse?.genres ?? new List<GenreDto>();
             }
 
             var movies = new List<Movie>();
@@ -59,12 +69,21 @@ namespace IMDB.Domain.Services
                 }
 
                 var movie = _movieMapper.Map(movieDto, _genres);
-                movie.AvailableLanguages = translations.Translations.Select(translation => _languageMapper.MapBack(translation.Iso639_1)).ToList();
+                movie.AvailableLanguages = translations.Translations?.Select(translation => _languageMapper.MapBack(translation.Iso639_1)).ToList();
                 movies.Add(movie);
             }
 
-            _page = moviesResponse.Page;
+            _page = moviesResponse.Page + 1;
+            _maxPage = moviesResponse.TotalPages;
             return movies;
+        }
+
+        public async Task<Movie> GetMovieDetail(int id, Language language)
+        {
+            var lang = _languageMapper.Map(language);
+            var movieDto = await _apiClient.GetAsync<MovieDetailDto>($"movie/{id}", lang);
+            var movie = _movieMapper.Map(movieDto, movieDto.Genres);
+            return movie;
         }
 
         private async Task DownloadImageIfNeeded(string folder, string filename)

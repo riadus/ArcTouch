@@ -30,7 +30,7 @@ namespace RiadIMDB.iOS.ViewControllers
             LanguagesTableView.Source = source;
 
             bindingSet.Apply();
-            ViewModel.PropertyChanged+= ViewModel_PropertyChanged;
+            ViewModel.PropertyChanged += ViewModel_PropertyChanged;
 
             LanguagesTableView.ReloadData();
         }
@@ -64,6 +64,8 @@ namespace RiadIMDB.iOS.ViewControllers
             ViewModel.PropertyChanged -= ViewModel_PropertyChanged;
             base.ViewWillDisappear(animated);
         }
+
+        override observe
     }
 }
 

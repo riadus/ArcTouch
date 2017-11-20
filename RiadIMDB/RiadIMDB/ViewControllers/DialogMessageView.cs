@@ -4,6 +4,7 @@ using UIKit;
 using MvvmCross.Binding.iOS.Views;
 using MvvmCross.Binding.BindingContext;
 using IMDB.Core.ViewModels.Dialogs;
+using RiadIMDB.iOS.Converters;
 
 namespace RiadIMDB.iOS
 {
@@ -26,7 +27,14 @@ namespace RiadIMDB.iOS
                       .To(vm => vm.Message);
             bindingSet.Bind(LoadingIndicator)
                       .For(li => li.Hidden)
-                      .To(vm => vm.Removable);
+                      .To(vm => vm.IsLoading)
+                      .WithConversion(new ReverseBooleanConverter());
+            
+            bindingSet.Bind(InfoLabel)
+                      .For(l => l.Hidden)
+                      .To(vm => vm.Removable)
+                      .WithConversion(new ReverseBooleanConverter());
+            
             LoadingIndicator.StartAnimating();
             bindingSet.Apply();
 

@@ -39,6 +39,7 @@
     <Compile Include="ViewModels\IncomingMoviesViewModel.cs" />
     <Compile Include="Services\IDialogService.cs" />
     <Compile Include="ViewModels\Dialogs\DialogMessageViewModel.cs" />
+    <Compile Include="ViewModels\MovieViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="MvvmCross.Platform">

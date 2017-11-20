@@ -16,33 +16,33 @@ namespace IMDB.Core.ViewModels
         private readonly IBackendService _backendService;
         private readonly IDialogService _dialogService;
         private readonly IFileStorageService _fileStorageService;
-        private readonly ILanguageService _languageService;
         private Language _currentLanguage;
 
         public IncomingMoviesViewModel(IBackendService backendService,
                                        IDialogService dialogService,
                                        IFileStorageService fileStorageService,
-                                       ILanguageService languageService)
+                                       ILanguageService languageService,
+                                       INavigationService navigationService) : base(languageService, navigationService)
         {
             _backendService = backendService;
             _dialogService = dialogService;
             _fileStorageService = fileStorageService;
-            _languageService = languageService;
+            LoadMoreCommand = new MvxAsyncCommand(LoadMore);
         }
 
-        public async Task Init(NavigationObject navigationObject)
+        public async Task Init()
         {
             try
             {
-                _dialogService.ShowMessage("Loading those great movies", false);
-                _currentLanguage = navigationObject.Language;
+                _dialogService.ShowMessage("Loading those great movies", false, true);
+                _currentLanguage = LanguageService.CurrentLanguage;
                 await LoadMovies().ConfigureAwait(false);
                 _dialogService.Hide();
             }
             catch (Exception)
             {
                 _dialogService.Hide();
-                _dialogService.ShowMessage("Oops, how embarassing for the developer. An error occured and they did not handle it.", true);
+                _dialogService.ShowMessage("Oops, how embarassing for the developer. An error occured and they did not handle it.", true, false);
             }
         }
 
@@ -51,32 +51,49 @@ namespace IMDB.Core.ViewModels
         private async Task LoadMovies()
         {
             var movies = await _backendService.GetMovies(_currentLanguage).ConfigureAwait(false);
-            Movies = movies.Select(movie => new MovieViewModel(movie, _fileStorageService, _languageService)).ToMvxObservableCollection();
+            Movies = movies.Select(movie => new MovieViewModel(movie, _fileStorageService, LanguageService, NavigationService)).ToMvxObservableCollection();
             RaisePropertyChanged(nameof(Movies));
         }
-    }
 
-    public class MovieViewModel : BaseViewModel
-    {
-        private readonly Movie _movie;
-        private readonly IFileStorageService _fileStorageService;
-        private readonly ILanguageService _languageService;
-        public MovieViewModel(Movie movie, 
-                              IFileStorageService fileStorageService,
-                              ILanguageService languageService)
+        private MovieViewModel _selectedMovie;
+
+        public MovieViewModel SelectedMovie
         {
-            _movie = movie;
-            _fileStorageService = fileStorageService;
-            _languageService = languageService;
-            OriginalLanguage = _languageService.GetLanguage(_movie.OriginalLanguage) ?? Language.Other;
-            AvailableLanguages = _movie.AvailableLanguages.Select(language => new LanguageViewModel(language)).ToList();
+            get
+            {
+                return _selectedMovie;
+            }
+
+            set
+            {
+                if (value != null)
+                {
+                    _selectedMovie = value;
+                    NavigationService.ShowMovieDetails(_selectedMovie.Id);
+                }
+            }
         }
 
-        public string PosterPath => _fileStorageService.GetPath("Posters", _movie.PosterPath);
-        public string Title => _movie.OriginalTitle;
-        public Language OriginalLanguage { get; private set; }
-        public string Overview => _movie.Overview;
-        public string RelaseDate => _movie.ReleaseDate.ToString("D");
-        public List<LanguageViewModel> AvailableLanguages { get; }
+        public IMvxAsyncCommand LoadMoreCommand { get; }
+
+        private async Task LoadMore()
+        {
+            try
+            {
+                _dialogService.ShowMessage("Loading even more great movies", true, true);
+                var movies = await _backendService.GetMoreMovies(LanguageService.CurrentLanguage).ConfigureAwait(false);
+                if (!movies.Any())
+                {
+                    return;
+                }
+                Movies.AddRange(movies.Select(movie => new MovieViewModel(movie, _fileStorageService, LanguageService, NavigationService)));
+                _dialogService.Hide();
+            }
+            catch (Exception)
+            {
+                _dialogService.Hide();
+                _dialogService.ShowMessage("Oops, how embarassing for the developer. An error occured and they did not handle it.", true, false);
+            }
+        }
     }
 }

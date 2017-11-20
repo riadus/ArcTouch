@@ -8,5 +8,6 @@ namespace IMDB.Domain.Interfaces
     {
         Task<IEnumerable<Movie>> GetMovies(Language language);
         Task<IEnumerable<Movie>> GetMoreMovies(Language language);
+        Task<Movie> GetMovieDetail(int id, Language language);
     }
 }

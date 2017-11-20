@@ -1,5 +1,4 @@
 ﻿using IMDB.Core.ViewModels;
-using IMDB.Data;
 using IMDB.Domain.Attributes;
 using MvvmCross.Core.ViewModels;
 
@@ -13,15 +12,23 @@ namespace IMDB.Core.Services
             ShowViewModel<HomeViewModel>();
         }
 
-        public void ShowIncomingMovies(Language language)
+        public void ShowIncomingMovies()
         {
-            ShowViewModel<IncomingMoviesViewModel>(new NavigationObject{
-                Language = language
-            });
+            ShowViewModel<IncomingMoviesViewModel>();
         }
 
-        public class NavigationObject{
-            public Language Language { get; set; }
+        public void ShowMovieDetails(int? movieId)
+        {
+            if(movieId == null)
+            {
+                return;
+            }
+            ShowViewModel<MovieDetailViewModel>(new NavigatingObject { Id = movieId.Value });
+        }
+
+        public class NavigatingObject
+        {
+            public int Id { get; set; }
         }
     }
 }

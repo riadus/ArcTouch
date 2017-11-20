@@ -7,19 +7,24 @@
 using Foundation;
 using System;
 using System.CodeDom.Compiler;
+using UIKit;
 
-namespace RiadIMDB.iOS.ViewControllers
+namespace RiadIMDB.iOS.Views
 {
-    [Register ("MovieViewCell")]
-    partial class MovieViewCell
+    [Register ("MovieDetailViewController")]
+    partial class MovieDetailViewController
     {
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
-        UIKit.UILabel GenresLabel { get; set; }
+        MvvmCross.Binding.iOS.Views.MvxImageView BackdropImage { get; set; }
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
-        MvvmCross.Binding.iOS.Views.MvxImageView OriginalLanguageImage { get; set; }
+        UIKit.UIScrollView ContentView { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UILabel GenresLabel { get; set; }
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
@@ -27,7 +32,7 @@ namespace RiadIMDB.iOS.ViewControllers
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
-        MvvmCross.Binding.iOS.Views.MvxImageView PosterImage { get; set; }
+        UIKit.NSLayoutConstraint OverviewWidthConstraint { get; set; }
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
@@ -37,20 +42,21 @@ namespace RiadIMDB.iOS.ViewControllers
         [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UILabel TitleLabel { get; set; }
 
-        [Outlet]
-        [GeneratedCode ("iOS Designer", "1.0")]
-        MvvmCross.Binding.iOS.Views.MvxImageView UserLanguageImage { get; set; }
-
         void ReleaseDesignerOutlets ()
         {
+            if (BackdropImage != null) {
+                BackdropImage.Dispose ();
+                BackdropImage = null;
+            }
+
+            if (ContentView != null) {
+                ContentView.Dispose ();
+                ContentView = null;
+            }
+
             if (GenresLabel != null) {
                 GenresLabel.Dispose ();
                 GenresLabel = null;
-            }
-
-            if (OriginalLanguageImage != null) {
-                OriginalLanguageImage.Dispose ();
-                OriginalLanguageImage = null;
             }
 
             if (OverviewLabel != null) {
@@ -58,9 +64,9 @@ namespace RiadIMDB.iOS.ViewControllers
                 OverviewLabel = null;
             }
 
-            if (PosterImage != null) {
-                PosterImage.Dispose ();
-                PosterImage = null;
+            if (OverviewWidthConstraint != null) {
+                OverviewWidthConstraint.Dispose ();
+                OverviewWidthConstraint = null;
             }
 
             if (ReleaseDateLabel != null) {
@@ -71,11 +77,6 @@ namespace RiadIMDB.iOS.ViewControllers
             if (TitleLabel != null) {
                 TitleLabel.Dispose ();
                 TitleLabel = null;
-            }
-
-            if (UserLanguageImage != null) {
-                UserLanguageImage.Dispose ();
-                UserLanguageImage = null;
             }
         }
     }

@@ -1,8 +1,9 @@
 ﻿using IMDB.Data;
+using MvvmCross.Core.ViewModels;
 
 namespace IMDB.Core.ViewModels
 {
-    public class LanguageViewModel : BaseViewModel
+    public class LanguageViewModel : MvxViewModel
     {
         public LanguageViewModel(Language language)
         {

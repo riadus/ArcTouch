@@ -12,18 +12,18 @@ namespace IMDB.Core.ViewModels
     public class HomeViewModel : BaseViewModel
     {
         private readonly INavigationService _navigationService;
-        private readonly ILanguageService _supportedLanguagesProvider;
+        private readonly ILanguageService _languageService;
         private readonly IDialogService _dialogService;
         private readonly IConnectivity _connectivity;
 
 
         public HomeViewModel(INavigationService navigationService,
-                             ILanguageService supportedLanguagesProvider,
+                             ILanguageService languageService,
                              IDialogService dialogService, 
-                             IConnectivity connectivity)
+                             IConnectivity connectivity) : base(languageService, navigationService)
         {
             _navigationService = navigationService;
-            _supportedLanguagesProvider = supportedLanguagesProvider;
+            _languageService = languageService;
             _dialogService = dialogService;
             _connectivity = connectivity;
             NavigateToIncomingMoviesCommand = new MvxCommand(NavigateToIncomingMovies);
@@ -38,8 +38,8 @@ namespace IMDB.Core.ViewModels
 
         public void Init()
         {
-            SupportedLanguages = _supportedLanguagesProvider.Languages.Where(x => x != Language.Other).Select(x => new LanguageViewModel(x)).ToMvxObservableCollection();
-            SelectedLanguage = SupportedLanguages.FirstOrDefault(x => x.Language == _supportedLanguagesProvider.DeviceLanguage);
+            SupportedLanguages = _languageService.Languages.Where(x => x != Language.Other).Select(x => new LanguageViewModel(x)).ToMvxObservableCollection();
+            SelectedLanguage = SupportedLanguages.FirstOrDefault(x => x.Language == _languageService.DeviceLanguage);
         }
 
         public string ChooseLanguageTxt => "Please select the language you want to use";
@@ -48,14 +48,16 @@ namespace IMDB.Core.ViewModels
         public IMvxCommand NavigateToIncomingMoviesCommand { get; }
         private void NavigateToIncomingMovies()
         {
-            if (_connectivity.IsConnected)
+            _languageService.CurrentLanguage = SelectedLanguage.Language;
+            _navigationService.ShowIncomingMovies();
+            /*if (_connectivity.IsConnected)
             {
                 _navigationService.ShowIncomingMovies(SelectedLanguage.Language);
             }
             else
             {
                 _dialogService.ShowMessage("90% of the time, we need the Internet in our life. This app is part of those 90%. Please feed us in some 01010101", true);
-            }
+            }*/
         }
 
         public MvxObservableCollection<LanguageViewModel> SupportedLanguages { get; private set; }

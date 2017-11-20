@@ -8,7 +8,7 @@ using System.Globalization;
 
 namespace IMDB.Domain.Services
 {
-    [RegisterInterfaceAsDynamic]
+    [RegisterInterfaceAsLazySingleton]
     public class LanguageService : ILanguageService
     {
         private readonly IDeviceInformations _deviceInformations;
@@ -31,6 +31,8 @@ namespace IMDB.Domain.Services
         public IEnumerable<Language> Languages => _languages;
 
         public Language DeviceLanguage => GetLanguage(_deviceInformations.DeviceLanguage);
+
+        public Language CurrentLanguage { get; set; }
 
         public Language? GetLanguage(string lang)
         {

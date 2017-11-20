@@ -47,4 +47,10 @@ namespace IMDB.Domain.DTOs
         [JsonProperty("release_date")]
         public string ReleaseDate { get; set; }
     }
+
+    public class MovieDetailDto : MovieDto
+    {
+        [JsonProperty("genres")]
+        public List<GenreDto> Genres { get; set; }
+    }
 }

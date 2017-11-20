@@ -1,12 +1,14 @@
-﻿namespace IMDB.Core.ViewModels.Dialogs
+﻿using MvvmCross.Core.ViewModels;
+
+namespace IMDB.Core.ViewModels.Dialogs
 {
-    public class DialogMessageViewModel : BaseViewModel
+    public class DialogMessageViewModel : MvxViewModel
     {
-        public DialogMessageViewModel(string message, bool removable)
+        public DialogMessageViewModel(string message, bool removable, bool withSpinner)
         {
             Message = message;
             Removable = removable;
-            IsLoading = !Removable;
+            IsLoading = withSpinner;
         }
 
         public string Message { get; }

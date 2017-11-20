@@ -52,12 +52,14 @@
     <Compile Include="Interfaces\IFileStorageService.cs" />
     <Compile Include="DTOs\Translation.cs" />
     <Compile Include="DTOs\TranslationsApiResponse.cs" />
+    <Compile Include="Services\OfflineApiClient.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Attributes\" />
     <Folder Include="DTOs\" />
     <Folder Include="Interfaces\" />
     <Folder Include="Services\" />
+    <Folder Include="Fixed\" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Newtonsoft.Json">
@@ -72,6 +74,9 @@
       <Project>{BA90BCF2-498F-459A-82BF-75A379F86F41}</Project>
       <Name>IMDB.Data</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Fixed\UpcomingMovies.json" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
 </Project>

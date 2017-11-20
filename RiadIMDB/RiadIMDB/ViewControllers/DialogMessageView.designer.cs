@@ -16,6 +16,10 @@ namespace RiadIMDB.iOS
     {
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UILabel InfoLabel { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UIActivityIndicatorView LoadingIndicator { get; set; }
 
         [Outlet]
@@ -24,6 +28,11 @@ namespace RiadIMDB.iOS
 
         void ReleaseDesignerOutlets ()
         {
+            if (InfoLabel != null) {
+                InfoLabel.Dispose ();
+                InfoLabel = null;
+            }
+
             if (LoadingIndicator != null) {
                 LoadingIndicator.Dispose ();
                 LoadingIndicator = null;

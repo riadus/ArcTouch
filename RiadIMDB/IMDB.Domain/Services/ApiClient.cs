@@ -30,19 +30,23 @@ namespace IMDB.Domain.Services
             };
         }
 
-        private string ApplyTokenAndLanguage(string url, string lang)
+        private string ApplyTokenLanguageAndPage(string url, string lang, int page)
         {
             url += $"?api_key={Token}";
             if(!string.IsNullOrEmpty(lang))
             {
                 url += $"&language={lang}";
             }
+            if(page > 1)
+            {
+                url += $"&page={page}";
+            }
             return url;
         }
 
-        public async Task<T> GetAsync<T>(string url, string lang = "")
+        public async Task<T> GetAsync<T>(string url, string lang = "", int page = 1)
         {
-            var urlWithToken = ApplyTokenAndLanguage(url, lang);
+            var urlWithToken = ApplyTokenLanguageAndPage(url, lang, page);
             var response = await GetContent(_httpClient, urlWithToken);
             var content = await response.Content.ReadAsStringAsync();
             var deserializedObject = JsonConvert.DeserializeObject<T>(content);

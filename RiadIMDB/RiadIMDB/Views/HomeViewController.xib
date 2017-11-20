@@ -1,71 +1,82 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6211" systemVersion="14A298i" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+        <deployment identifier="iOS"/>
+        <development version="8000" identifier="xcode"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HomeViewController">
             <connections>
-                <outlet property="view" destination="2" id="RRd-Eg-VrN"/>
-                <outlet property="NavigateToUpcompingMoviesBtn" destination="755" id="name-outlet-755"/>
                 <outlet property="LanguagesTableView" destination="898" id="name-outlet-898"/>
+                <outlet property="NavigateToUpcompingMoviesBtn" destination="755" id="name-outlet-755"/>
+                <outlet property="view" destination="2" id="RRd-Eg-VrN"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="2">
-            <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="755" translatesAutoresizingMaskIntoConstraints="NO">
-                    <rect key="frame" x="50" y="285" width="500" height="30"/>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="755">
+                    <rect key="frame" x="181" y="318" width="238" height="30"/>
                     <state key="normal" title="Button">
-                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </state>
                 </button>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="898" translatesAutoresizingMaskIntoConstraints="NO">
-                    <rect key="frame" x="180" y="103" width="240" height="128"/>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="898">
+                    <rect key="frame" x="180" y="103" width="240" height="161.5"/>
+                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
-                        <constraint id="902" firstItem="898" firstAttribute="width" constant="240"/>
+                        <constraint firstAttribute="width" constant="240" id="2837"/>
+                        <constraint firstAttribute="height" constant="161" id="2878"/>
                     </constraints>
+                    <variation key="default">
+                        <mask key="constraints">
+                            <exclude reference="2837"/>
+                            <exclude reference="2878"/>
+                        </mask>
+                    </variation>
+                    <variation key="heightClass=compact">
+                        <mask key="constraints">
+                            <include reference="2837"/>
+                            <include reference="2878"/>
+                        </mask>
+                    </variation>
                 </tableView>
             </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint id="756" firstItem="2" firstAttribute="centerX" secondItem="755" secondAttribute="centerX"/>
-                <constraint id="757" firstItem="2" firstAttribute="centerY" secondItem="755" secondAttribute="centerY"/>
-                <constraint id="890" firstItem="755" firstAttribute="leading" secondItem="2" secondAttribute="leading" constant="50"/>
-                <constraint id="891" firstItem="2" firstAttribute="trailing" secondItem="755" secondAttribute="trailing" constant="50"/>
-                <constraint id="899" firstItem="898" firstAttribute="top" secondItem="2" secondAttribute="top" constant="103"/>
-                <constraint id="900" firstItem="898" firstAttribute="centerX" secondItem="2" secondAttribute="centerX"/>
-                <constraint id="901" firstItem="755" firstAttribute="top" secondItem="898" secondAttribute="bottom" constant="54"/>
+                <constraint firstItem="898" firstAttribute="top" secondItem="2" secondAttribute="top" constant="103" id="2755"/>
+                <constraint firstItem="898" firstAttribute="centerX" secondItem="2" secondAttribute="centerX" id="2796"/>
+                <constraint firstItem="755" firstAttribute="leading" secondItem="898" secondAttribute="leading" constant="97" id="2919">
+                    <variation key="heightClass=compact" constant="1"/>
+                </constraint>
+                <constraint firstItem="898" firstAttribute="trailing" secondItem="755" secondAttribute="trailing" constant="97" id="2960">
+                    <variation key="heightClass=compact" constant="1"/>
+                </constraint>
+                <constraint firstItem="755" firstAttribute="top" secondItem="898" secondAttribute="bottom" constant="54" id="3001"/>
             </constraints>
-            <color key="backgroundColor" colorSpace="calibratedWhite" white="1" alpha="1"/>
+            <variation key="default">
+                <mask key="constraints">
+                    <exclude reference="2755"/>
+                    <exclude reference="2796"/>
+                    <exclude reference="2960"/>
+                    <exclude reference="2919"/>
+                    <exclude reference="3001"/>
+                </mask>
+            </variation>
+            <variation key="heightClass=compact">
+                <mask key="constraints">
+                    <include reference="2755"/>
+                    <include reference="2796"/>
+                    <include reference="2960"/>
+                    <include reference="2919"/>
+                    <include reference="3001"/>
+                </mask>
+            </variation>
+            <point key="canvasLocation" x="33.5" y="54.5"/>
         </view>
     </objects>
-    <resources>
-        <image name="Arabic.png" width="16" height="16"/>
-        <image name="Bulgarian.png" width="16" height="16"/>
-        <image name="Czech.png" width="16" height="16"/>
-        <image name="Danish.png" width="16" height="16"/>
-        <image name="Dutch.png" width="16" height="16"/>
-        <image name="English.png" width="16" height="16"/>
-        <image name="Finnish.png" width="16" height="16"/>
-        <image name="French.png" width="16" height="16"/>
-        <image name="German.png" width="16" height="16"/>
-        <image name="Greek.png" width="16" height="16"/>
-        <image name="Hebrew.png" width="16" height="16"/>
-        <image name="Hungarian.png" width="16" height="16"/>
-        <image name="Italian.png" width="16" height="16"/>
-        <image name="Korean.png" width="16" height="16"/>
-        <image name="Mandarin.png" width="16" height="16"/>
-        <image name="Norwegian.png" width="16" height="16"/>
-        <image name="Persian.png" width="16" height="16"/>
-        <image name="Polish.png" width="16" height="16"/>
-        <image name="Portuguese.png" width="16" height="16"/>
-        <image name="Russian.png" width="16" height="16"/>
-        <image name="Serbian.png" width="16" height="16"/>
-        <image name="Slovak.png" width="16" height="16"/>
-        <image name="Spanish.png" width="16" height="16"/>
-        <image name="Turkish.png" width="16" height="16"/>
-        <image name="Ukrainian.png" width="16" height="16"/>
-    </resources>
 </document>
