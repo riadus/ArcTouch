@@ -1,11 +1,9 @@
-﻿using System;
-using System.Windows.Input;
+﻿using System.Windows.Input;
 using Foundation;
 using IMDB.Core.ViewModels;
 using MvvmCross.Binding.BindingContext;
 using MvvmCross.Binding.ExtensionMethods;
 using MvvmCross.Binding.iOS.Views;
-using MvvmCross.Core.ViewModels;
 using MvvmCross.iOS.Views;
 using UIKit;
 
@@ -13,6 +11,8 @@ namespace RiadIMDB.iOS.ViewControllers
 {
     public partial class IncomingMoviesViewController : MvxViewController<IncomingMoviesViewModel>
     {
+        private SimpleTableViewSource _moviesTableViewSource;
+
         public IncomingMoviesViewController() : base("IncomingMoviesViewController", null)
         {
             this.DelayBind(SetBindings);
@@ -22,24 +22,30 @@ namespace RiadIMDB.iOS.ViewControllers
         {
             var bindingSet = this.CreateBindingSet<IncomingMoviesViewController, IncomingMoviesViewModel>();
 
-            var source = new SimpleTableViewSource(MoviesTableView, MovieViewCell.Key, MovieViewCell.Key);
+            _moviesTableViewSource = new SimpleTableViewSource(MoviesTableView, MovieViewCell.Key, MovieViewCell.Key);
 
-            bindingSet.Bind(source)
+            bindingSet.Bind(_moviesTableViewSource)
                       .To(vm => vm.Movies);
 
-            bindingSet.Bind(source)
+            bindingSet.Bind(_moviesTableViewSource)
                       .For(s => s.WillEndCommand)
                       .To(vm => vm.LoadMoreCommand);
-            
-            MoviesTableView.Source = source;
 
-            bindingSet.Bind(source)
+            bindingSet.Bind(_moviesTableViewSource)
                       .For(s => s.SelectedItem)
                       .To(vm => vm.SelectedMovie);
-
+            
+            MoviesTableView.Source = _moviesTableViewSource;
             bindingSet.Apply();
             MoviesTableView.RowHeight = 436;
             MoviesTableView.ReloadData();
+            _moviesTableViewSource.SelectedItemChanged += _moviesTableViewSource_SelectedItemChanged;
+        }
+
+        void _moviesTableViewSource_SelectedItemChanged(object sender, System.EventArgs e)
+        {
+            if (_moviesTableViewSource.SelectedItem == null) { return; }
+            _moviesTableViewSource.SelectedItem = null;
         }
     }
 

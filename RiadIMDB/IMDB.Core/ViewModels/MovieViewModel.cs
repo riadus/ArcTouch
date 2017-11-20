@@ -27,7 +27,7 @@ namespace IMDB.Core.ViewModels
         protected void Init(Movie movie)
         {
             Movie = movie;
-            Genres = Movie?.Genres?.Where(genre => !string.IsNullOrEmpty(genre))?.Aggregate(HandleFunc);
+            Genres = Movie?.Genres?.Where(genre => !string.IsNullOrEmpty(genre))?.Aggregate(GenresToString);
             OriginalLanguage = Movie.OriginalLanguage;
             UserLanguage =  _languageService.CurrentLanguage;
         }
@@ -41,9 +41,9 @@ namespace IMDB.Core.ViewModels
         public string Genres { get; private set; }
         public bool UserLanguageIsAvailable => Movie?.AvailableLanguages != null && Movie.AvailableLanguages.Any(language => language == _languageService.CurrentLanguage) && _languageService.CurrentLanguage != OriginalLanguage;
         public Language UserLanguage { get; private set; }
-        string HandleFunc(string arg1, string arg2)
+        private string GenresToString(string genre, string rest)
         {
-            return $"{arg1}, {arg2}";
+            return $"{genre}, {rest}";
         }
     }
 }

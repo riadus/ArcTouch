@@ -59,7 +59,7 @@ namespace IMDB.Core.ViewModels
         }
 
         public MvxObservableCollection<LanguageViewModel> SupportedLanguages { get; private set; }
-        LanguageViewModel _selectedLanguage;
+        private LanguageViewModel _selectedLanguage;
 
         public LanguageViewModel SelectedLanguage
         {

@@ -11,7 +11,7 @@ namespace IMDB.Core.ViewModels
         }
         public Language Language { get; }
 
-        bool _isSelected;
+        private bool _isSelected;
 
         public bool IsSelected
         {

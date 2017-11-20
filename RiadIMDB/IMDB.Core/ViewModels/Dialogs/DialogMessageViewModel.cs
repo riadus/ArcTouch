@@ -13,6 +13,6 @@ namespace IMDB.Core.ViewModels.Dialogs
 
         public string Message { get; }
         public bool Removable { get; }
-        public bool IsLoading { get; set; }
+        public bool IsLoading { get; }
     }
 }
