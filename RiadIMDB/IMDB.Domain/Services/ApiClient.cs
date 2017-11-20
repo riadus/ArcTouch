@@ -47,8 +47,8 @@ namespace IMDB.Domain.Services
         public async Task<T> GetAsync<T>(string url, string lang = "", int page = 1)
         {
             var urlWithToken = ApplyTokenLanguageAndPage(url, lang, page);
-            var response = await GetContent(_httpClient, urlWithToken);
-            var content = await response.Content.ReadAsStringAsync();
+            var response = await GetContent(_httpClient, urlWithToken).ConfigureAwait(false);
+            var content = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
             var deserializedObject = JsonConvert.DeserializeObject<T>(content);
             return deserializedObject;
         }
@@ -79,8 +79,8 @@ namespace IMDB.Domain.Services
 
         public async Task<byte[]> GetImage(string url)
         {
-            var response = await GetContent(_imageHttpClient, $"t/p/w150/{url}");
-            return await response.Content.ReadAsByteArrayAsync();
+            var response = await GetContent(_imageHttpClient, $"t/p/w150/{url}").ConfigureAwait(false);
+            return await response.Content.ReadAsByteArrayAsync().ConfigureAwait(false);
         }
     }
 }

@@ -37,7 +37,7 @@ namespace IMDB.Domain.Services
             {
                 return new List<Movie>();
             }
-            return await GetMovies(language, _page);
+            return await GetMovies(language, _page).ConfigureAwait(false);
         }
 
         public Task<IEnumerable<Movie>> GetMovies(Language language)
@@ -61,11 +61,11 @@ namespace IMDB.Domain.Services
                 var translations = await _apiClient.GetAsync<TranslationsApiResponse>($"movie/{movieDto.Id}/translations").ConfigureAwait(false);
                 if (movieDto.PosterPath != null)
                 {
-                    await DownloadImageIfNeeded("Posters", movieDto.PosterPath);
+                    await DownloadImageIfNeeded("Posters", movieDto.PosterPath).ConfigureAwait(false);
                 }
                 if (movieDto.BackdropPath != null)
                 {
-                    await DownloadImageIfNeeded("Backdrops", movieDto.BackdropPath);
+                    await DownloadImageIfNeeded("Backdrops", movieDto.BackdropPath).ConfigureAwait(false);
                 }
 
                 var movie = _movieMapper.Map(movieDto, _genres);
@@ -81,7 +81,7 @@ namespace IMDB.Domain.Services
         public async Task<Movie> GetMovieDetail(int id, Language language)
         {
             var lang = _languageMapper.Map(language);
-            var movieDto = await _apiClient.GetAsync<MovieDetailDto>($"movie/{id}", lang);
+            var movieDto = await _apiClient.GetAsync<MovieDetailDto>($"movie/{id}", lang).ConfigureAwait(false);
             var movie = _movieMapper.Map(movieDto, movieDto.Genres);
             return movie;
         }
@@ -90,7 +90,7 @@ namespace IMDB.Domain.Services
         {
             if (!_fileStorageService.FileExists(folder, filename))
             {
-                var poster = await _apiClient.GetImage(filename);
+                var poster = await _apiClient.GetImage(filename).ConfigureAwait(false);
                 _fileStorageService.SaveFile(poster, folder, filename);
             }
         }
