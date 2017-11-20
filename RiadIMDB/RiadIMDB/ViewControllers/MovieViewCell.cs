@@ -1,11 +1,9 @@
 ﻿using System;
-
 using Foundation;
 using IMDB.Core.ViewModels;
 using MvvmCross.Binding.BindingContext;
 using MvvmCross.Binding.iOS.Views;
 using RiadIMDB.iOS.Converters;
-using RiadIMDB.iOS.Views;
 using UIKit;
 
 namespace RiadIMDB.iOS.ViewControllers
@@ -53,11 +51,6 @@ namespace RiadIMDB.iOS.ViewControllers
                       .To(vm => vm.Title); 
             bindingSet.Bind(OverviewLabel)
                       .To(vm => vm.Overview);
-           /* var source = new MvxCollectionViewSource(LanguagesCollectionView, LanguageCollectionViewCell.Key);
-            bindingSet.Bind(source)
-                      .To(vm => vm.AvailableLanguages);
-            LanguagesCollectionView.Source = source;*/
-
             bindingSet.Bind(ReleaseDateLabel)
                       .To(vm => vm.RelaseDate);
 
@@ -66,18 +59,11 @@ namespace RiadIMDB.iOS.ViewControllers
 
             bindingSet.Apply();
             TitleLabel.SizeToFit();
-            //LanguagesCollectionView.ReloadData();
         }
 
         public override void LayoutSubviews()
         {
             SelectionStyle = UITableViewCellSelectionStyle.None;
-            var layout = new UICollectionViewFlowLayout
-            {
-                MinimumLineSpacing = 2,
-                MinimumInteritemSpacing = 2
-            };
-            //LanguagesCollectionView.CollectionViewLayout = layout;
             base.LayoutSubviews();
         }
     }

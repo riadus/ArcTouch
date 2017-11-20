@@ -1,5 +1,4 @@
 ﻿using System;
-
 using Foundation;
 using IMDB.Core.ViewModels;
 using MvvmCross.Binding.BindingContext;

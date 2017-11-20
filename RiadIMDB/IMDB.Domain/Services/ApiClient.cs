@@ -77,11 +77,6 @@ namespace IMDB.Domain.Services
             }
         }
 
-        public Task<TResponse> PostAsync<TResponse, TContent>(string url, TContent content)
-        {
-            throw new NotImplementedException();
-        }
-
         public async Task<byte[]> GetImage(string url)
         {
             var response = await GetContent(_imageHttpClient, $"t/p/w150/{url}");

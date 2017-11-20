@@ -25,11 +25,6 @@ namespace IMDB.Domain.Services
             throw new NotImplementedException();
         }
 
-        public Task<TResponse> PostAsync<TResponse, TContent>(string url, TContent content)
-        {
-            throw new NotImplementedException();
-        }
-
         async Task<T> ReadJsonResource<T>()
         {
             var assembly = typeof(OfflineApiClient).GetTypeInfo().Assembly;

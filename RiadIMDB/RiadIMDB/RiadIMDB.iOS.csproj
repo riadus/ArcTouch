@@ -183,8 +183,8 @@
     <Compile Include="ViewControllers\IncomingMoviesViewController.designer.cs">
       <DependentUpon>IncomingMoviesViewController.cs</DependentUpon>
     </Compile>
-    <Compile Include="IoC\FileStorageService.cs" />
-    <Compile Include="IoC\DialogService.cs" />
+    <Compile Include="IoC\FileStorageServiceIOS.cs" />
+    <Compile Include="IoC\DialogServiceIOS.cs" />
     <Compile Include="Extensions\UIViewExtensions.cs" />
     <Compile Include="Views\ViewFactory.cs" />
     <Compile Include="ViewControllers\DialogMessageView.cs" />

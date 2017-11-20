@@ -6,6 +6,5 @@ namespace IMDB.Domain.Interfaces
     {
         Task<T> GetAsync<T>(string url, string lang = "", int page = 1);
         Task<byte[]> GetImage(string url);
-        Task<TResponse> PostAsync<TResponse, TContent>(string url, TContent content);
     }
 }

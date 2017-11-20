@@ -1,15 +1,14 @@
 ﻿using System;
 using System.IO;
-using IMDB.Common;
 using IMDB.Domain.Interfaces;
 
 namespace RiadIMDB.iOS.IoC
 {
-    public class FileStorageService : IFileStorageService
+    public class FileStorageServiceIOS : IFileStorageService
     {
         private readonly string _personalFolder;
 
-        public FileStorageService()
+        public FileStorageServiceIOS()
         {
             _personalFolder = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
         }

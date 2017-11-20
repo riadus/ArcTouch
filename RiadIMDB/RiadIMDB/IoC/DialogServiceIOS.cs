@@ -6,7 +6,7 @@ using UIKit;
 
 namespace RiadIMDB.iOS.IoC
 {
-    public class DialogService : NSObject, IDialogService
+    public class DialogServiceIOS : NSObject, IDialogService
     {
         private DialogMessageView _view;
 

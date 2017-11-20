@@ -23,8 +23,8 @@ namespace RiadIMDB.iOS
         protected override void InitializePlatformServices()
         {
             Mvx.RegisterType<IDeviceInformations, DeviceInformationsIOS>();
-            Mvx.RegisterType<IFileStorageService, FileStorageService>();
-            Mvx.RegisterType<IDialogService, DialogService>();
+            Mvx.RegisterType<IFileStorageService, FileStorageServiceIOS>();
+            Mvx.RegisterType<IDialogService, DialogServiceIOS>();
 
             base.InitializePlatformServices();
         }
