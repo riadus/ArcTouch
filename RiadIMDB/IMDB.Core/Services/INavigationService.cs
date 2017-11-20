@@ -1,6 +1,4 @@
-﻿using IMDB.Data;
-
-namespace IMDB.Core.Services
+﻿namespace IMDB.Core.Services
 {
     public interface INavigationService
     {

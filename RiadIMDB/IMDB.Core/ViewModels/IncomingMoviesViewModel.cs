@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using IMDB.Common;
@@ -7,7 +6,6 @@ using IMDB.Core.Services;
 using IMDB.Data;
 using IMDB.Domain.Interfaces;
 using MvvmCross.Core.ViewModels;
-using static IMDB.Core.Services.NavigationService;
 
 namespace IMDB.Core.ViewModels
 {

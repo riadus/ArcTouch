@@ -19,6 +19,10 @@ namespace RiadIMDB.iOS.ViewControllers
             var bindingSet = this.CreateBindingSet<HomeViewController, HomeViewModel>();
             bindingSet.Bind(NavigateToUpcompingMoviesBtn)
                       .To(vm => vm.NavigateToIncomingMoviesCommand);
+            bindingSet.Bind(NavigateToUpcompingMoviesBtn)
+                      .For("Title")
+                      .To(vm => vm.NavigateButtonTxt);
+            
             var source = new MvxSimpleTableViewSource(LanguagesTableView, LanguageViewCell.Key, LanguageViewCell.Key);
 
             bindingSet.Bind(source)

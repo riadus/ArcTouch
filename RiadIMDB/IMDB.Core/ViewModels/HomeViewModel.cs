@@ -1,5 +1,4 @@
 ﻿using System.Linq;
-using System.Threading.Tasks;
 using Cheesebaron.MvxPlugins.Connectivity;
 using IMDB.Common;
 using IMDB.Core.Services;
@@ -42,22 +41,21 @@ namespace IMDB.Core.ViewModels
             SelectedLanguage = SupportedLanguages.FirstOrDefault(x => x.Language == _languageService.DeviceLanguage);
         }
 
-        public string ChooseLanguageTxt => "Please select the language you want to use";
-        public string InfoTxt => "The language of this app won't change. Only data from IMDB";
+        public string NavigateButtonTxt => "See incoming movies";
 
         public IMvxCommand NavigateToIncomingMoviesCommand { get; }
         private void NavigateToIncomingMovies()
         {
-            _languageService.CurrentLanguage = SelectedLanguage.Language;
-            _navigationService.ShowIncomingMovies();
-            /*if (_connectivity.IsConnected)
+           
+            if (_connectivity.IsConnected)
             {
-                _navigationService.ShowIncomingMovies(SelectedLanguage.Language);
+                _languageService.CurrentLanguage = SelectedLanguage.Language;
+                _navigationService.ShowIncomingMovies();
             }
             else
             {
-                _dialogService.ShowMessage("90% of the time, we need the Internet in our life. This app is part of those 90%. Please feed us in some 01010101", true);
-            }*/
+                _dialogService.ShowMessage("90% of the time, we need the Internet in our life. This app is part of those 90%. Please feed us in some 01010101", true, false);
+            }
         }
 
         public MvxObservableCollection<LanguageViewModel> SupportedLanguages { get; private set; }
