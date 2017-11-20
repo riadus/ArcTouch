@@ -40,6 +40,7 @@ namespace RiadIMDB.iOS.ViewControllers
             bindingSet.Apply();
             MoviesTableView.RowHeight = 436;
             MoviesTableView.ReloadData();
+            MoviesTableView.AllowsSelection = false;
         }
     }
 
