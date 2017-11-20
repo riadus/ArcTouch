@@ -16,14 +16,6 @@ namespace RiadIMDB.iOS.ViewControllers
     {
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
-        UIKit.UILabel ChooseLanguageLabel { get; set; }
-
-        [Outlet]
-        [GeneratedCode ("iOS Designer", "1.0")]
-        UIKit.UILabel InfoLabel { get; set; }
-
-        [Outlet]
-        [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UITableView LanguagesTableView { get; set; }
 
         [Outlet]
@@ -32,16 +24,6 @@ namespace RiadIMDB.iOS.ViewControllers
 
         void ReleaseDesignerOutlets ()
         {
-            if (ChooseLanguageLabel != null) {
-                ChooseLanguageLabel.Dispose ();
-                ChooseLanguageLabel = null;
-            }
-
-            if (InfoLabel != null) {
-                InfoLabel.Dispose ();
-                InfoLabel = null;
-            }
-
             if (LanguagesTableView != null) {
                 LanguagesTableView.Dispose ();
                 LanguagesTableView = null;

@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -144,22 +144,16 @@
       <InProject>false</InProject>
     </ImageAsset>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Resources\" />
-    <Folder Include="ViewControllers\" />
-    <Folder Include="Views\" />
-    <Folder Include="Converters\" />
-    <Folder Include="IoC\" />
-    <Folder Include="Extensions\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <InterfaceDefinition Include="LaunchScreen.storyboard" />
     <InterfaceDefinition Include="Views\HomeViewController.xib" />
     <InterfaceDefinition Include="Views\LanguageViewCell.xib" />
-    <InterfaceDefinition Include="Views\IncomingMoviesViewController.xib" />
+    <InterfaceDefinition Include="Views\IncomingMoviesViewController.xib">
+      <SubType>Designer</SubType>
+    </InterfaceDefinition>
     <InterfaceDefinition Include="Views\DialogMessageView.xib" />
     <InterfaceDefinition Include="Views\MovieViewCell.xib" />
-    <InterfaceDefinition Include="Views\LanguageCollectionViewCell.xib" />
     <InterfaceDefinition Include="Views\MovieDetailViewController.xib" />
   </ItemGroup>
   <ItemGroup>
@@ -202,10 +196,6 @@
     <Compile Include="ViewControllers\MovieViewCell.cs" />
     <Compile Include="ViewControllers\MovieViewCell.designer.cs">
       <DependentUpon>MovieViewCell.cs</DependentUpon>
-    </Compile>
-    <Compile Include="ViewControllers\LanguageCollectionViewCell.cs" />
-    <Compile Include="ViewControllers\LanguageCollectionViewCell.designer.cs">
-      <DependentUpon>LanguageCollectionViewCell.cs</DependentUpon>
     </Compile>
     <Compile Include="ViewControllers\MovieDetailViewController.cs" />
     <Compile Include="ViewControllers\MovieDetailViewController.designer.cs">

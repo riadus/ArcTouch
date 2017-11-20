@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+﻿<?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
@@ -20,16 +20,16 @@
                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="280" customClass="MvxImageView">
                         <rect key="frame" x="0.0" y="40.5" width="320" height="160"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="160" id="388"/>
+                            <constraint id="22010" firstItem="280" firstAttribute="height" constant="160"/>
                         </constraints>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="419">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="419" misplaced="YES" ambiguous="YES">
                         <rect key="frame" x="130" y="208.5" width="60" height="29"/>
                         <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="6" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2746">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="6" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2746" misplaced="YES" ambiguous="YES">
                         <rect key="frame" x="29" y="257.5" width="263" height="20.5"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
@@ -44,7 +44,7 @@
                         </view>
                     </collectionViewCell>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="9520" translatesAutoresizingMaskIntoConstraints="NO">
-                        <rect key="frame" x="257.5" y="10" width="41.5" height="20.5"/>
+                        <rect key="frame" x="258.5" y="10" width="41.5" height="20.5"/>
                         <fontDescription key="fontDescription" type="italicSystem" pointSize="17"/>
                         <color key="textColor" colorSpace="calibratedWhite" white="0.333333333333333" alpha="1"/>
                     </label>
@@ -70,10 +70,7 @@
                     </imageView>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="280" firstAttribute="leading" secondItem="YTl-1W-gDM" secondAttribute="leading" id="308"/>
-                    <constraint firstAttribute="trailing" secondItem="280" secondAttribute="trailing" id="322"/>
                     <constraint firstItem="419" firstAttribute="centerX" secondItem="YTl-1W-gDM" secondAttribute="centerX" id="446"/>
-                    <constraint firstItem="419" firstAttribute="top" secondItem="280" secondAttribute="bottom" constant="8" id="460"/>
                     <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="419" secondAttribute="trailing" constant="20" id="525"/>
                     <constraint firstItem="419" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="YTl-1W-gDM" secondAttribute="leading" constant="20" id="539"/>
                     <constraint firstItem="2746" firstAttribute="leading" secondItem="YTl-1W-gDM" secondAttribute="leading" constant="29" id="2845"/>
@@ -83,14 +80,16 @@
                     <constraint id="13546" firstItem="YTl-1W-gDM" firstAttribute="bottom" secondItem="9542" secondAttribute="bottom" constant="20"/>
                     <constraint id="13656" firstItem="9542" firstAttribute="top" secondItem="2746" secondAttribute="bottom" constant="10" relation="greaterThanOrEqual"/>
                     <constraint id="13789" firstItem="9520" firstAttribute="top" secondItem="YTl-1W-gDM" secondAttribute="top" constant="10"/>
-                    <constraint id="13811" firstItem="YTl-1W-gDM" firstAttribute="trailing" secondItem="9520" secondAttribute="trailing" constant="21"/>
+                    <constraint id="13811" firstItem="YTl-1W-gDM" firstAttribute="trailing" secondItem="9520" secondAttribute="trailing" constant="20"/>
                     <constraint id="13833" firstItem="9520" firstAttribute="leading" secondItem="YTl-1W-gDM" secondAttribute="leading" constant="30" relation="greaterThanOrEqual"/>
-                    <constraint id="13918" firstItem="280" firstAttribute="top" secondItem="9520" secondAttribute="bottom" constant="10"/>
                     <constraint id="14980" firstItem="14622" firstAttribute="leading" secondItem="YTl-1W-gDM" secondAttribute="leading" constant="30"/>
                     <constraint id="15087" firstItem="14622" firstAttribute="top" secondItem="9520" secondAttribute="top"/>
                     <constraint id="15891" firstItem="15315" firstAttribute="leading" secondItem="14622" secondAttribute="trailing" constant="16"/>
                     <constraint id="15913" firstItem="15315" firstAttribute="top" secondItem="14622" secondAttribute="top" constant="1"/>
                     <constraint id="20034" firstItem="2746" firstAttribute="top" secondItem="419" secondAttribute="bottom" constant="20"/>
+                    <constraint id="21938" firstItem="280" firstAttribute="top" secondItem="YTl-1W-gDM" secondAttribute="top" constant="40"/>
+                    <constraint id="21962" firstItem="280" firstAttribute="leading" secondItem="YTl-1W-gDM" secondAttribute="leading"/>
+                    <constraint id="21986" firstItem="280" firstAttribute="trailing" secondItem="YTl-1W-gDM" secondAttribute="trailing"/>
                 </constraints>
             </tableViewCellContentView>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

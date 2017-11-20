@@ -33,7 +33,6 @@ namespace RiadIMDB.iOS.ViewControllers
 
         private void SetBindings()
         {
-            //LanguagesCollectionView.RegisterNibForCell(LanguageCollectionViewCell.Nib, LanguageCollectionViewCell.Key);
             var bindingSet = this.CreateBindingSet<MovieViewCell, MovieViewModel>();
             bindingSet.Bind(_originalLanguageImageViewLoader)
                       .For(i => i.ImageUrl)

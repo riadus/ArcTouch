@@ -12,8 +12,6 @@
                 <outlet property="LanguagesTableView" destination="898" id="name-outlet-898"/>
                 <outlet property="NavigateToUpcompingMoviesBtn" destination="755" id="name-outlet-755"/>
                 <outlet property="view" destination="2" id="RRd-Eg-VrN"/>
-                <outlet property="InfoLabel" destination="3265" id="name-outlet-3265"/>
-                <outlet property="ChooseLanguageLabel" destination="3156" id="name-outlet-3156"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -22,7 +20,7 @@
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="755">
-                    <rect key="frame" x="181" y="318" width="238" height="30"/>
+                    <rect key="frame" x="181" y="317" width="238" height="30"/>
                     <state key="normal" title="Button">
                         <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </state>
@@ -33,6 +31,8 @@
                     <constraints>
                         <constraint firstAttribute="width" constant="240" id="2837"/>
                         <constraint firstAttribute="height" constant="161" id="2878"/>
+                        <constraint id="4569" firstItem="898" firstAttribute="height" constant="161"/>
+                        <constraint id="4603" firstItem="898" firstAttribute="width" constant="240"/>
                     </constraints>
                     <variation key="default">
                         <mask key="constraints">
@@ -47,18 +47,6 @@
                         </mask>
                     </variation>
                 </tableView>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="3156" translatesAutoresizingMaskIntoConstraints="NO" numberOfLines="0">
-                    <rect key="frame" x="20" y="559.5" width="42" height="20.5"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <nil key="textColor"/>
-                    <nil key="highlightedColor"/>
-                </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="3265" translatesAutoresizingMaskIntoConstraints="NO" numberOfLines="0">
-                    <rect key="frame" x="538" y="559.5" width="42" height="20.5"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <nil key="textColor"/>
-                    <nil key="highlightedColor"/>
-                </label>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
@@ -71,11 +59,11 @@
                     <variation key="heightClass=compact" constant="1"/>
                 </constraint>
                 <constraint firstItem="755" firstAttribute="top" secondItem="898" secondAttribute="bottom" constant="54" id="3001"/>
-                <constraint id="3251" firstItem="3156" firstAttribute="leading" secondItem="2" secondAttribute="leading" constant="20"/>
-                <constraint id="3252" firstItem="2" firstAttribute="bottom" secondItem="3156" secondAttribute="bottom" constant="20"/>
-                <constraint id="3266" firstItem="2" firstAttribute="trailing" secondItem="3265" secondAttribute="trailing" constant="20"/>
-                <constraint id="3267" firstItem="2" firstAttribute="bottom" secondItem="3265" secondAttribute="bottom" constant="20"/>
-                <constraint id="3282" firstItem="3265" firstAttribute="leading" secondItem="3156" secondAttribute="trailing" constant="20" relation="greaterThanOrEqual"/>
+                <constraint id="4434" firstItem="898" firstAttribute="top" secondItem="2" secondAttribute="top" constant="103"/>
+                <constraint id="4535" firstItem="898" firstAttribute="centerX" secondItem="2" secondAttribute="centerX"/>
+                <constraint id="4637" firstItem="755" firstAttribute="top" secondItem="898" secondAttribute="bottom" constant="53"/>
+                <constraint id="4671" firstItem="898" firstAttribute="trailing" secondItem="755" secondAttribute="trailing" constant="1"/>
+                <constraint id="4705" firstItem="755" firstAttribute="leading" secondItem="898" secondAttribute="leading" constant="1"/>
             </constraints>
             <variation key="default">
                 <mask key="constraints">
