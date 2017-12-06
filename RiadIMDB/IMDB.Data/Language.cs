@@ -1,0 +1,32 @@
+﻿namespace IMDB.Data
+{
+    public enum Language
+    {
+        English,
+        French,
+        Spanish,
+        Italian,
+        Hebrew,
+        Polish,
+        Mandarin,
+        Slovak,
+        Czech,
+        Korean,
+        German,
+        Portuguese,
+        Norwegian,
+        Danish,
+        Russian,
+        Hungarian,
+        Bulgarian,
+        Turkish,
+        Ukrainian,
+        Greek,
+        Serbian,
+        Arabic,
+        Dutch,
+        Finnish,
+        Persian,
+        Other
+    }
+}

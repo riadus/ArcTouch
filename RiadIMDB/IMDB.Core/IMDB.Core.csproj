@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{B1212698-FBAB-430C-9035-2B9AF7137DB1}</ProjectGuid>
+    <ProjectTypeGuids>{786C830F-07A1-408B-BD7F-6EE04809D6DB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <UseMSBuildEngine>true</UseMSBuildEngine>
+    <OutputType>Library</OutputType>
+    <RootNamespace>IMDB.Core</RootNamespace>
+    <AssemblyName>IMDB.Core</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkProfile>Profile111</TargetFrameworkProfile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug</OutputPath>
+    <DefineConstants>DEBUG;</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="App.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="AppStart.cs" />
+    <Compile Include="Services\INavigationService.cs" />
+    <Compile Include="Services\NavigationService.cs" />
+    <Compile Include="ViewModels\HomeViewModel.cs" />
+    <Compile Include="ViewModels\BaseViewModel.cs" />
+    <Compile Include="ViewModels\LanguageViewModel.cs" />
+    <Compile Include="ViewModels\IncomingMoviesViewModel.cs" />
+    <Compile Include="Services\IDialogService.cs" />
+    <Compile Include="ViewModels\Dialogs\DialogMessageViewModel.cs" />
+    <Compile Include="ViewModels\MovieViewModel.cs" />
+    <Compile Include="ViewModels\MovieDetailViewModel.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="MvvmCross.Platform">
+      <HintPath>..\packages\MvvmCross.Platform.5.4.2\lib\portable-net45+win+wpa81+wp80\MvvmCross.Platform.dll</HintPath>
+    </Reference>
+    <Reference Include="MvvmCross.Core">
+      <HintPath>..\packages\MvvmCross.Core.5.4.2\lib\portable-net45+win+wpa81+wp80\MvvmCross.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="MvvmCross.Binding">
+      <HintPath>..\packages\MvvmCross.Binding.5.4.2\lib\portable-net45+win+wpa81+wp80\MvvmCross.Binding.dll</HintPath>
+    </Reference>
+    <Reference Include="MvvmCross.Localization">
+      <HintPath>..\packages\MvvmCross.Binding.5.4.2\lib\portable-net45+win+wpa81+wp80\MvvmCross.Localization.dll</HintPath>
+    </Reference>
+    <Reference Include="MvvmCross.Plugins.DownloadCache">
+      <HintPath>..\packages\MvvmCross.Plugin.DownloadCache.5.4.2\lib\portable-net45+win+wpa81+wp80\MvvmCross.Plugins.DownloadCache.dll</HintPath>
+    </Reference>
+    <Reference Include="MvvmCross.Plugins.File">
+      <HintPath>..\packages\MvvmCross.Plugin.File.5.4.2\lib\portable-net45+win+wpa81+wp80\MvvmCross.Plugins.File.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.10.0.3\lib\portable-net45+win8+wp8+wpa81\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="MvvmCross.Plugins.Json">
+      <HintPath>..\packages\MvvmCross.Plugin.Json.5.4.2\lib\portable-net45+win+wpa81+wp80\MvvmCross.Plugins.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Collections.Immutable">
+      <HintPath>..\packages\System.Collections.Immutable.1.4.0\lib\portable-net45+win8+wp8+wpa81\System.Collections.Immutable.dll</HintPath>
+    </Reference>
+    <Reference Include="MvvmCross.Plugins.Messenger">
+      <HintPath>..\packages\MvvmCross.Plugin.Messenger.5.4.2\lib\portable-net45+win+wpa81+wp80\MvvmCross.Plugins.Messenger.dll</HintPath>
+    </Reference>
+    <Reference Include="Cheesebaron.MvxPlugins.Connectivity">
+      <HintPath>..\packages\Cheesebaron.MvxPlugins.Connectivity.3.2.0\lib\portable-net45+win+wpa81\Cheesebaron.MvxPlugins.Connectivity.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Services\" />
+    <Folder Include="ViewModels\" />
+    <Folder Include="ViewModels\Dialogs\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\IMDB.Domain\IMDB.Domain.csproj">
+      <Project>{1F5AC637-6A76-43E9-94C1-1E07532D221B}</Project>
+      <Name>IMDB.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\IMDB.Data\IMDB.Data.csproj">
+      <Project>{BA90BCF2-498F-459A-82BF-75A379F86F41}</Project>
+      <Name>IMDB.Data</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="..\IMDB.Common\IMDB.Common.projitems" Label="Shared" Condition="Exists('..\IMDB.Common\IMDB.Common.projitems')" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
+</Project>

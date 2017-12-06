@@ -1,0 +1,143 @@
+﻿<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6211" systemVersion="14A298i" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MovieDetailViewController">
+            <connections>
+                <outlet property="view" destination="2" id="RRd-Eg-VrN"/>
+                <outlet property="BackdropImage" destination="334" id="name-outlet-334"/>
+                <outlet property="TitleLabel" destination="349" id="name-outlet-349"/>
+                <outlet property="GenresLabel" destination="375" id="name-outlet-375"/>
+                <outlet property="OverviewLabel" destination="575" id="name-outlet-575"/>
+                <outlet property="ReleaseDateLabel" destination="619" id="name-outlet-619"/>
+                <outlet property="ContentView" destination="252" id="name-outlet-252"/>
+                <outlet property="OverviewWidthConstraint" destination="5929" id="name-outlet-5929"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="2">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <subviews>
+                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="252" translatesAutoresizingMaskIntoConstraints="NO" showsHorizontalScrollIndicator="NO">
+                    <rect key="frame" x="0.0" y="286" width="375" height="381"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="375" translatesAutoresizingMaskIntoConstraints="NO" numberOfLines="0">
+                            <rect key="frame" x="30" y="8" width="42" height="20.5"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="575" translatesAutoresizingMaskIntoConstraints="NO" numberOfLines="0">
+                            <rect key="frame" x="30" y="89" width="42" height="20.5"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                            <constraints>
+                                <constraint id="5929" firstItem="575" firstAttribute="width" constant="42"/>
+                            </constraints>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="619" translatesAutoresizingMaskIntoConstraints="NO">
+                            <rect key="frame" x="30" y="48.5" width="42" height="20.5"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <constraints>
+                        <constraint id="489" firstItem="375" firstAttribute="leading" secondItem="252" secondAttribute="leading" constant="30"/>
+                        <constraint id="490" firstItem="375" firstAttribute="top" secondItem="252" secondAttribute="top" constant="8"/>
+                        <constraint id="4781" firstItem="619" firstAttribute="leading" secondItem="375" secondAttribute="leading"/>
+                        <constraint id="4794" firstItem="619" firstAttribute="top" secondItem="375" secondAttribute="bottom" constant="20"/>
+                        <constraint id="4819" firstItem="575" firstAttribute="top" secondItem="619" secondAttribute="bottom" constant="20"/>
+                        <constraint id="4832" firstItem="575" firstAttribute="leading" secondItem="619" secondAttribute="leading"/>
+                    </constraints>
+                </scrollView>
+                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="334" customClass="MvxImageView" translatesAutoresizingMaskIntoConstraints="NO">
+                    <rect key="frame" x="0.0" y="60" width="375" height="160"/>
+                    <variation key="heightClass=regular-widthClass=compact">
+                        <mask key="constraints">
+                            <include reference="6720"/>
+                        </mask>
+                    </variation>
+                    <constraints>
+                        <constraint id="6720" firstItem="334" firstAttribute="height" constant="160"/>
+                    </constraints>
+                    <variation key="default">
+                        <mask key="constraints">
+                            <exclude reference="6720"/>
+                        </mask>
+                    </variation>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="349" translatesAutoresizingMaskIntoConstraints="NO">
+                    <rect key="frame" x="156.5" y="236" width="62.5" height="30"/>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <constraints>
+                <constraint id="326" firstItem="252" firstAttribute="leading" secondItem="2" secondAttribute="leading"/>
+                <constraint id="327" firstItem="2" firstAttribute="bottom" secondItem="252" secondAttribute="bottom"/>
+                <constraint id="328" firstItem="2" firstAttribute="trailing" secondItem="252" secondAttribute="trailing"/>
+                <constraint id="404" firstItem="349" firstAttribute="leading" secondItem="2" secondAttribute="leading" constant="30" relation="greaterThanOrEqual"/>
+                <constraint id="414" firstItem="2" firstAttribute="trailing" secondItem="349" secondAttribute="trailing" constant="30" relation="greaterThanOrEqual"/>
+                <constraint id="437" firstItem="252" firstAttribute="top" secondItem="349" secondAttribute="bottom" constant="20"/>
+                <constraint id="462" firstItem="2" firstAttribute="centerX" secondItem="349" secondAttribute="centerX"/>
+                <constraint id="4342" firstItem="252" firstAttribute="width" secondItem="2" secondAttribute="width"/>
+                <constraint id="6691" firstItem="334" firstAttribute="top" secondItem="2" secondAttribute="top" constant="60"/>
+                <constraint id="6692" firstItem="334" firstAttribute="leading" secondItem="2" secondAttribute="leading"/>
+                <constraint id="6693" firstItem="334" firstAttribute="trailing" secondItem="2" secondAttribute="trailing"/>
+                <constraint id="7397" firstItem="349" firstAttribute="top" secondItem="334" secondAttribute="bottom" constant="16"/>
+            </constraints>
+            <variation key="default">
+                <mask key="constraints">
+                    <exclude reference="6691"/>
+                    <exclude reference="6692"/>
+                    <exclude reference="6693"/>
+                    <exclude reference="7397"/>
+                </mask>
+            </variation>
+            <variation key="heightClass=regular-widthClass=compact">
+                <mask key="constraints">
+                    <include reference="6691"/>
+                    <include reference="6692"/>
+                    <include reference="6693"/>
+                    <include reference="7397"/>
+                </mask>
+            </variation>
+        </view>
+    </objects>
+    <resources>
+        <image name="Arabic.png" width="16" height="16"/>
+        <image name="Bulgarian.png" width="16" height="16"/>
+        <image name="Czech.png" width="16" height="16"/>
+        <image name="Danish.png" width="16" height="16"/>
+        <image name="Dutch.png" width="16" height="16"/>
+        <image name="English.png" width="16" height="16"/>
+        <image name="Finnish.png" width="16" height="16"/>
+        <image name="French.png" width="16" height="16"/>
+        <image name="German.png" width="16" height="16"/>
+        <image name="Greek.png" width="16" height="16"/>
+        <image name="Hebrew.png" width="16" height="16"/>
+        <image name="Hungarian.png" width="16" height="16"/>
+        <image name="Italian.png" width="16" height="16"/>
+        <image name="Korean.png" width="16" height="16"/>
+        <image name="Mandarin.png" width="16" height="16"/>
+        <image name="Norwegian.png" width="16" height="16"/>
+        <image name="Persian.png" width="16" height="16"/>
+        <image name="Polish.png" width="16" height="16"/>
+        <image name="Portuguese.png" width="16" height="16"/>
+        <image name="Russian.png" width="16" height="16"/>
+        <image name="Serbian.png" width="16" height="16"/>
+        <image name="Slovak.png" width="16" height="16"/>
+        <image name="Spanish.png" width="16" height="16"/>
+        <image name="Turkish.png" width="16" height="16"/>
+        <image name="Ukrainian.png" width="16" height="16"/>
+    </resources>
+    <simulatedMetricsContainer key="defaultSimulatedMetrics">
+        <simulatedScreenMetrics key="destination" type="retina47"/>
+    </simulatedMetricsContainer>
+</document>
